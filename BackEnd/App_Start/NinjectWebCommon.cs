@@ -12,6 +12,9 @@ namespace BackEnd.App_Start
     using Ninject.Web.Common;
     using BackEnd.Interfaces;
 
+    /// <summary>
+    /// dependency resolver
+    /// </summary>
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();

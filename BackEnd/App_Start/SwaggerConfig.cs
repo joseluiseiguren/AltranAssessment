@@ -7,8 +7,14 @@ using Swashbuckle.Application;
 
 namespace BackEnd
 {
+    /// <summary>
+    /// autodocumentacion de la webapi
+    /// </summary>
     public class SwaggerConfig
     {
+        /// <summary>
+        /// se hace el tunning
+        /// </summary>
         public static void Register()
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;

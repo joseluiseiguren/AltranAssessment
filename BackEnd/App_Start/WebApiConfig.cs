@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-
-namespace BackEnd
+﻿namespace BackEnd
 {
+    using System.Web.Http;
+
+    /// <summary>
+    /// configuracion de la webapi
+    /// </summary>
     public static class WebApiConfig
     {
+        /// <summary>
+        /// registracion de rutas
+        /// </summary>
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            
-
-            // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

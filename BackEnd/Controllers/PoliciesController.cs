@@ -7,11 +7,17 @@
     using System.Collections.Generic;
     using Infraestructure;
 
+    /// <summary>
+    /// controller para el recurso policies
+    /// </summary>
     public class PoliciesController : ApiController
     {
         private IClientsRepository clientsRepository;
         private IPoliciesRepository policiesRepository;
 
+        /// <summary>
+        /// constructor: se le deben inyectar los repositorios con los que va interactuar
+        /// </summary>
         public PoliciesController(
                     IClientsRepository clientsRepository,
                     IPoliciesRepository policiesRepository)
@@ -20,8 +26,11 @@
             this.policiesRepository = policiesRepository;
         }
 
-        //[Authorize(Roles = "admin")]
+        /// <summary>
+        /// obtiene una lista de ´policies por username
+        /// </summary>
         [HttpGet]
+        //[Authorize(Roles = "admin")]
         [ResponseType(typeof(IEnumerable<PolicyDTO>))]
         public IHttpActionResult ByUserName(string username)
         {
@@ -37,12 +46,6 @@
             {
                 return this.NotFound();
             }
-
-            /*var config = new AutoMapper.MapperConfiguration(cfg => {
-                cfg.CreateMap<Models.Policy, PolicyDTO>();
-            });
-            AutoMapper.IMapper iMapper = config.CreateMapper();
-            List<PolicyDTO> destination = iMapper.Map<List<Models.Policy>, List<PolicyDTO>>(policies);*/
 
             return this.Ok(policies.ToDto());
         }

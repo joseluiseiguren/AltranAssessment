@@ -3,8 +3,14 @@
     using System;
     using System.Web.Http.Filters;
 
+    /// <summary>
+    /// filtro encargado de manejar los errores
+    /// </summary>
     public class CustomHandleErrorAttribute : ExceptionFilterAttribute
     {
+        /// <summary>
+        /// loguea el detalle de las excepciones en disco, y devuelve un GUID de referencia
+        /// </summary>
         public override void OnException(HttpActionExecutedContext context)
         {
             string errorGuid = Guid.NewGuid().ToString();

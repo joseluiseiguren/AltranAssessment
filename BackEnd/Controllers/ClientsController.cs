@@ -6,11 +6,17 @@
     using Dto;
     using Infraestructure;
 
+    /// <summary>
+    /// controller para el recurso clients
+    /// </summary>
     public class ClientsController : ApiController
     {
         private IClientsRepository clientsRepository;
         private IPoliciesRepository policiesRepository;
 
+        /// <summary>
+        /// constructor: se le deben inyectar los repositorios con los que va interactuar
+        /// </summary>
         public ClientsController(
                             IClientsRepository clientsRepository,
                             IPoliciesRepository policiesRepository)
@@ -19,8 +25,11 @@
             this.policiesRepository = policiesRepository;
         }
 
-        //[Authorize(Roles = "users,admin")]
+        /// <summary>
+        /// obtiene un cliente por ID
+        /// </summary>
         [HttpGet]
+        //[Authorize(Roles = "users,admin")]
         [ResponseType(typeof(ClientDTO))]
         public IHttpActionResult ById(string id)
         {
@@ -33,8 +42,11 @@
             return this.Ok(client.ToDto());
         }
 
-        //[Authorize(Roles = "users,admin")]
+        /// <summary>
+        /// obtiene un cliente por username
+        /// </summary>
         [HttpGet]
+        //[Authorize(Roles = "users,admin")]
         [ResponseType(typeof(ClientDTO))]
         public IHttpActionResult ByUserName(string username)
         {
@@ -47,8 +59,11 @@
             return this.Ok(client.ToDto());
         }
 
-        //[Authorize(Roles = "admin")]
+        /// <summary>
+        /// obtiene un cliente por policy number
+        /// </summary>
         [HttpGet]
+        //[Authorize(Roles = "admin")]
         [ResponseType(typeof(ClientDTO))]
         public IHttpActionResult ByPolicyNumber(string policyNumber)
         {
