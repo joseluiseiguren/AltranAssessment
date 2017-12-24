@@ -4,6 +4,8 @@
     using BackEnd.Controllers;
     using BackEnd.Tests.Controllers.RepositoriesMock;
     using System.Collections.Generic;
+    using BackEnd.Dto;
+    using System.Linq;
 
     [TestClass]
     public class PoliciesControllerTest
@@ -19,11 +21,11 @@
             PoliciesController controller = new PoliciesController(clientRepository, policyRepository);
 
             var result = controller.ByUserName(userName);
-            var contentResult = result as System.Web.Http.Results.OkNegotiatedContentResult<List<Models.Policy>>;
+            var contentResult = result as System.Web.Http.Results.OkNegotiatedContentResult<IEnumerable<PolicyDTO>>;
 
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(2, contentResult.Content.Count);
+            Assert.AreEqual(2, contentResult.Content.ToList().Count);
         }
 
         [TestMethod]

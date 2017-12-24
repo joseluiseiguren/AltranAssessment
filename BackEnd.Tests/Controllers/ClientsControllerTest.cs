@@ -3,6 +3,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using BackEnd.Controllers;
     using BackEnd.Tests.Controllers.RepositoriesMock;
+    using BackEnd.Dto;
 
     [TestClass]
     public class ClientsControllerTest
@@ -18,7 +19,7 @@
             ClientsController controller = new ClientsController(clientRepository, policyRepository);
 
             var result = controller.ById(clientId);
-            var contentResult = result as System.Web.Http.Results.OkNegotiatedContentResult<Models.Client>;
+            var contentResult = result as System.Web.Http.Results.OkNegotiatedContentResult<ClientDTO>;
             
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
@@ -52,7 +53,7 @@
             ClientsController controller = new ClientsController(clientRepository, policyRepository);
 
             var result = controller.ByUserName(userName);
-            var contentResult = result as System.Web.Http.Results.OkNegotiatedContentResult<Models.Client>;
+            var contentResult = result as System.Web.Http.Results.OkNegotiatedContentResult<ClientDTO>;
 
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
@@ -87,7 +88,7 @@
             ClientsController controller = new ClientsController(clientRepository, policyRepository);
 
             var result = controller.ByPolicyNumber(policyNumber);
-            var contentResult = result as System.Web.Http.Results.OkNegotiatedContentResult<Models.Client>;
+            var contentResult = result as System.Web.Http.Results.OkNegotiatedContentResult<ClientDTO>;
 
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
