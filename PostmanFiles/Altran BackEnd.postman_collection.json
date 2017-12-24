@@ -1,0 +1,123 @@
+{
+	"info": {
+		"name": "Altran BackEnd",
+		"_postman_id": "a21c46e1-c31c-9e99-7b36-a9992a0a99a7",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetClientById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{host}}/api/clients/Byid/a0ece5db-cd14-4f21-812f-966633e7be86",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"Byid",
+						"a0ece5db-cd14-4f21-812f-966633e7be86"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetClientByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{host}}/api/clients/ByUserName?userName=Britney",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"ByUserName"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "Britney",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetClientByPolicyNumber",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{host}}/api/clients/ByPolicyNumber?policyNumber=64cceef9-3a01-49ae-a23b-3761b604800b",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"ByPolicyNumber"
+					],
+					"query": [
+						{
+							"key": "policyNumber",
+							"value": "64cceef9-3a01-49ae-a23b-3761b604800b",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetPoliciesByUserName",
+			"request": {
+				"auth": {
+					"type": "basic"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{host}}/api/policies/ByUserName?userName=Manning",
+					"protocol": "http",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"policies",
+						"ByUserName"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "Manning",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
