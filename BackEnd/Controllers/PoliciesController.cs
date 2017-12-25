@@ -6,6 +6,8 @@
     using Dto;
     using System.Collections.Generic;
     using Infraestructure;
+    using Swashbuckle.Swagger.Annotations;
+    using System.Net;
 
     /// <summary>
     /// controller para el recurso policies
@@ -32,6 +34,7 @@
         [HttpGet]
         //[Authorize(Roles = "admin")]
         [ResponseType(typeof(IEnumerable<PolicyDTO>))]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ByUserName(string username)
         {
             var client = this.clientsRepository.GetByName(username);

@@ -5,6 +5,8 @@
     using System.Web.Http.Description;
     using Dto;
     using Infraestructure;
+    using Swashbuckle.Swagger.Annotations;
+    using System.Net;
 
     /// <summary>
     /// controller para el recurso clients
@@ -31,6 +33,7 @@
         [HttpGet]
         //[Authorize(Roles = "users,admin")]
         [ResponseType(typeof(ClientDTO))]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ById(string id)
         {
             var client = this.clientsRepository.GetById(id);
@@ -48,6 +51,7 @@
         [HttpGet]
         //[Authorize(Roles = "users,admin")]
         [ResponseType(typeof(ClientDTO))]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ByUserName(string username)
         {
             var client = this.clientsRepository.GetByName(username);
@@ -65,6 +69,7 @@
         [HttpGet]
         //[Authorize(Roles = "admin")]
         [ResponseType(typeof(ClientDTO))]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ByPolicyNumber(string policyNumber)
         {
             var policy = this.policiesRepository.GetById(policyNumber);
