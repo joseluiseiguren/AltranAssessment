@@ -7,6 +7,7 @@
     using Infraestructure;
     using Swashbuckle.Swagger.Annotations;
     using System.Net;
+    using BackEnd.Filters;
 
     /// <summary>
     /// controller para el recurso clients
@@ -31,7 +32,8 @@
         /// obtiene un cliente por ID
         /// </summary>
         [HttpGet]
-        [Authorize(Roles = "users,admin")]
+        //[Authorize(Roles = "users,admin")]
+        [Aut(Users = "Pedro,Juan")]
         [ResponseType(typeof(ClientDTO))]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ById(string id)

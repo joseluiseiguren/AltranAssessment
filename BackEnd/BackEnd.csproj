@@ -185,6 +185,7 @@
     <Compile Include="Dal\WebService\PoliciesRepository.cs" />
     <Compile Include="Dto\ClientDTO.cs" />
     <Compile Include="Dto\PolicyDTO.cs" />
+    <Compile Include="Filters\AutAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
