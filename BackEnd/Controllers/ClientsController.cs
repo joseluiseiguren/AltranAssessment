@@ -31,7 +31,7 @@
         /// obtiene un cliente por ID
         /// </summary>
         [HttpGet]
-        //[Authorize(Roles = "users,admin")]
+        [Authorize(Roles = "users,admin")]
         [ResponseType(typeof(ClientDTO))]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ById(string id)
