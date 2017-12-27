@@ -1,0 +1,75 @@
+{
+	"info": {
+		"name": "Altran FrontEnd",
+		"_postman_id": "0bc3434f-84ab-a260-0bfd-ee797c9f37e1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetClientsByFilter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://{{hostFrontEnd}}/api/clients?id&name=a&email&role=admin",
+					"protocol": "http",
+					"host": [
+						"{{hostFrontEnd}}"
+					],
+					"path": [
+						"api",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "",
+							"equals": false
+						},
+						{
+							"key": "name",
+							"value": "a",
+							"equals": true
+						},
+						{
+							"key": "email",
+							"value": "",
+							"equals": false
+						},
+						{
+							"key": "role",
+							"value": "admin",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2ec64cd9-f9c1-4d36-86d5-1938c4986a0b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "44f66a6f-c14c-4d1d-95ab-8ac5dd805ecc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

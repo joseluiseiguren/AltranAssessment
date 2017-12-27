@@ -13,10 +13,10 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://{{host}}/api/clients/Byid/a0ece5db-cd14-4f21-812f-966633e7be86",
+					"raw": "http://{{hostBackEnd}}/api/clients/Byid/a0ece5db-cd14-4f21-812f-966633e7be86",
 					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"{{hostBackEnd}}"
 					],
 					"path": [
 						"api",
@@ -36,10 +36,10 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://{{host}}/api/clients/ByUserName?userName=Britney",
+					"raw": "http://{{hostBackEnd}}/api/clients/ByUserName?userName=Britney",
 					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"{{hostBackEnd}}"
 					],
 					"path": [
 						"api",
@@ -65,10 +65,10 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://{{host}}/api/clients/ByPolicyNumber?policyNumber=64cceef9-3a01-49ae-a23b-3761b604800b",
+					"raw": "http://{{hostBackEnd}}/api/clients/ByPolicyNumber?policyNumber=64cceef9-3a01-49ae-a23b-3761b604800b",
 					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"{{hostBackEnd}}"
 					],
 					"path": [
 						"api",
@@ -97,10 +97,10 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://{{host}}/api/policies/ByUserName?userName=Manning",
+					"raw": "http://{{hostBackEnd}}/api/policies/ByUserName?userName=Manning",
 					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"{{hostBackEnd}}"
 					],
 					"path": [
 						"api",
