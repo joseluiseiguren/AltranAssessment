@@ -4,6 +4,10 @@
     using Infraestructure;
     using System.Web.Http;
     using System.Linq;
+    using System.Linq.Dynamic;
+    using FrontEnd.Models;
+    using FrontEnd.Dto;
+    using System;
 
     public class ClientsController : ApiController
     {
@@ -23,14 +27,32 @@
                                     string id = null,
                                     string name = null,
                                     string email = null,
-                                    string role = null)
+                                    string role = null,
+                                    [FromUri]PaginadoDTO paginado = null,
+                                    [FromUri]OrdenamientoDTO ordenamiento = null)
         {
-            var clients = this.clientsRepository.GetClients();
-            if (clients == null)
+            //TODO: eliminar
+            System.Threading.Thread.Sleep(1500);
+
+            // no se puede hacer un pedido sin paginacion
+            if (paginado == null)
             {
-                return this.NotFound();
+                // toma los valores por default del paginado
+                paginado = new PaginadoDTO();
             }
 
+            // no se puede hacer un pedido sin ordenamiento o de una columna que no existe
+            if (ordenamiento == null ||
+                typeof(Client).GetProperties().Where(p => p.Name.ToUpper() == ordenamiento.ColumnaOrdenamiento.ToUpper()).FirstOrDefault() == null)
+            {
+                // toma los valores por default del ordenamiento
+                ordenamiento = new OrdenamientoDTO();
+                ordenamiento.ColumnaOrdenamiento = nameof(Client.Id);
+            }
+
+            // se obtienen los clientes del repositorio
+            var clients = this.clientsRepository.GetClients();
+            
             // filtro por id (equals)
             if (!string.IsNullOrEmpty(id))
             {
@@ -55,13 +77,23 @@
                 clients = clients.Where(p => p.Role.ToUpper().Equals(role.ToUpper()));
             }
 
-            var result = clients.ToList();
-            if (result.Count <= 0)
-            {
-                return this.NotFound();
-            }
+            // cantidad de registros (sin paginacion)
+            var cantidadRegistros = clients.Count();
 
-            return this.Ok(clients.ToDto());
+            // se aplica el ordenamiento
+            clients = clients.OrderBy($"{ordenamiento.ColumnaOrdenamiento} {ordenamiento.GetSentidoOrdenamiento()}");
+
+            // se aplica el paginado
+            clients = clients.Skip((int)(paginado.Pagina - 1) * (int)paginado.FilasPorPagina).Take((int)paginado.FilasPorPagina);
+            
+            // dto de respuesta
+            GenericListDTO<ClientDTO> resp = new GenericListDTO<ClientDTO>();
+            resp.Lista = clients.ToDto();
+            resp.PaginaActual = paginado.Pagina;
+            resp.CantidadRegistros = cantidadRegistros;
+            resp.CantidadPaginas = (int)Math.Ceiling((decimal)cantidadRegistros / (decimal)paginado.FilasPorPagina);
+
+            return this.Ok(resp);
         }
     }
 }

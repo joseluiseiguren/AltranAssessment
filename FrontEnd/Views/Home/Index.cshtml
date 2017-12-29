@@ -1,1 +1,181 @@
-﻿
+﻿<link href="~/Content/Loading.css" rel="stylesheet" />
+
+<form id="frmFiltros" class="header-bar clearfix">
+    <fieldset class="col-md-5">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="text" id="filterId" placeholder="Id Filter" tabindex=1 />
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" id="filterName" placeholder="Name Filter" tabindex=2 />
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" id="filterEmail" placeholder="Email Filter" tabindex=3/>
+            </div>
+            <div class="form-group col-md-6">
+                <select id="filterRole" tabindex=4>
+                    <option value="" disabled selected>Role Filter</option>
+                    <option value="all">&lt;All&gt;</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <input type="submit" value="Search" id="btnSearch" tabindex=5 />
+        </div>
+    </fieldset>
+</form>
+
+<div id="seachMessages"></div>
+
+<div class="contentTable">
+    <table class="Table col-md-12" id="tClientes">
+        <thead class="thead">
+            <tr class="tr">
+                <th class="th" id="colId"><a href="#">Id</a></th>
+                <th class="th" id="colName"><a href="#">Name</a></th>
+                <th class="th" id="colEmail"><a href="#">Email</a></th>
+                <th class="th" id="colRole"><a href="#">Role</a></th>
+            </tr>
+        </thead>
+        <tbody class="tbody"></tbody>
+    </table>
+</div>
+
+<fieldset id="fPaginado">
+    <label>Rows Per Page</label>
+    <select id="filasPorPagina">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+    </select>
+    <br />
+    <label>Total Records: </label>
+    <label id="totalregistros"></label>
+    <br />
+    <label>Total Pages: </label>
+    <label id="totalpaginas"></label>
+    <br />
+    <label>Actual Page: </label>
+    <label id="paginaactual"></label>
+    <input type="button" value="<-" id="prevPage" />
+    <input type="button" value="->" id="nextPage" />
+</fieldset>
+
+<script>
+    var ordenamientoAsc = true;
+    var ordenamientoCol = "id";
+    var paginaActual = 1;
+
+    $(document).ready(function () {
+        $('#paginaactual').text(paginaActual);
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    $("#frmFiltros").submit(function (event) {
+        event.preventDefault();
+        paginaActual = 1;
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    $("#filasPorPagina").change(function () {
+        $('#paginaactual').text(paginaActual);
+        paginaActual = 1;
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    $("#nextPage").click(function () {
+        paginaActual += 1;
+        $('#paginaactual').text(paginaActual);
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    $("#prevPage").click(function () {
+        paginaActual -= 1;
+        $('#paginaactual').text(paginaActual);
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    $("#colId").click(function () {
+        paginaActual = 1;
+        ordenamientoAsc = (ordenamientoCol == "id") ? !ordenamientoAsc : true;
+        ordenamientoCol = "id";
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    $("#colName").click(function () {
+        paginaActual = 1;
+        ordenamientoAsc = (ordenamientoCol == "name") ? !ordenamientoAsc : true;
+        ordenamientoCol = "name";
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    $("#colEmail").click(function () {
+        paginaActual = 1;
+        ordenamientoAsc = (ordenamientoCol == "email") ? !ordenamientoAsc : true;
+        ordenamientoCol = "email";
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    $("#colRole").click(function () {
+        paginaActual = 1;
+        ordenamientoAsc = (ordenamientoCol == "role") ? !ordenamientoAsc : true;
+        ordenamientoCol = "role";
+        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
+    });
+
+    function LoadRows(
+        ordenAsc = true,
+        orderCol = "id",
+        pagina = 1) {
+        $('#Loader').show();
+        $('#tClientes').hide();
+        $('#fPaginado').hide();
+        $('#seachMessages').text('');
+        $('#tClientes > tbody').empty();
+        var id = 'id=' + $('#filterId').val();
+        var name = 'name=' + $('#filterName').val();
+        var email = 'email=' + $('#filterEmail').val();
+        var role = ($('#filterRole')[0].selectedIndex < 2) ? 'role=' : 'role=' + $('#filterRole').val();
+        var filasPorPagina = 'filasPorPagina=' + $('#filasPorPagina').val();
+        $.getJSON("/api/clients?" + id + "&" + name + "&" + email + "&" + role + "&pagina=" + pagina + "&" + filasPorPagina + "&Asc=" + ordenAsc + "&ColumnaOrdenamiento=" + orderCol, function (data) {
+            $('#totalregistros').text(data.CantidadRegistros);
+            $('#totalpaginas').text(data.CantidadPaginas);
+            $('#paginaactual').text(data.PaginaActual);
+            if (data.Lista.length > 0) {
+                var trHTML = '';
+                $.each(data.Lista, function () {
+                    trHTML += '<tr class="tr"><td class="td"><a href="#">' + this['Id'] + '</a></td><td class="td">' + this['Name'] + '</td><td class="td">' + this['Email'] + '</td><td class="td">' + this['Role'] + '</td></tr>';
+                });
+                $('#tClientes > tbody').append(trHTML);
+                $('#tClientes').show();
+                $('#fPaginado').show();
+            } else {
+                $('#seachMessages').text('No records found');
+            }
+
+            // se acomoda el paginado (next)
+            if (pagina >= data.CantidadPaginas) {
+                $("#nextPage").prop("disabled", true);
+            } else {
+                $("#nextPage").prop("disabled", false);
+            }
+
+            // se acomoda el paginado (prev)
+            if (pagina == 1) {
+                $("#prevPage").prop("disabled", true);
+            } else {
+                $("#prevPage").prop("disabled", false);
+            }
+
+            $('#Loader').hide();
+        }).fail(function (data, textStatus, xhr) {
+            $('#Loader').hide();
+
+            // TODO: mostrar bien el error
+            $('#seachMessages').text('Error: ' + textStatus);
+            console.log(data);
+            console.log(textStatus);
+            console.log(xhr);
+        });
+    }
+</script>

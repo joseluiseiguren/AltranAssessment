@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace FrontEnd.Dto
+﻿namespace FrontEnd.Dto
 {
     /// <summary>
     /// DTO de clientes
