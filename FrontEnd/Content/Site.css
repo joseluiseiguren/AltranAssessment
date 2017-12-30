@@ -23,9 +23,110 @@ textarea {
     max-width: 280px;
 }
 
+/* ------------------------ filtrado ------------------------ */
+.filtros {
+    float: left;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-top: 10px;
+    width: 20%;
+}
+
+.filtro {
+    width: 100%;
+    margin-bottom: 5px;
+    display: inline-block;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    overflow: visible;
+}
+
+.filtroApply {
+    width: 100%;
+    text-align: center;
+    background-color: #8080ff;
+    color: white;
+    padding: 12px 20px;
+    margin: 14px 0 8px 0;
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px #ddd;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.filroLabel {
+    font-family: Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: normal;
+}
+
+.filtroNextPrevButton {
+    background-color: #8080ff;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width:45%;
+}
+
+.filtroNextPrevButton:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.Centrado {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.Message {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    font-weight: bolder;
+    color: red;
+}
+
+.Title {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bolder;
+    color: dimgray;
+    margin: 10px;
+    width: 100%;
+}
+
 /* ------------------------ Tablas Grales ------------------------ */
 .contentTable {
     padding: 0px 15px;
+    float:left;
+    width: 80%;
 }
 
 .Table {

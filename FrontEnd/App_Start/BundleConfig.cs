@@ -25,7 +25,9 @@ namespace FrontEnd
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/loading.css",
+                      "~/Content/font-awesome.min.css"));
         }
     }
 }

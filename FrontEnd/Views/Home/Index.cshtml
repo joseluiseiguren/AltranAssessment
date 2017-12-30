@@ -1,79 +1,72 @@
-﻿<link href="~/Content/Loading.css" rel="stylesheet" />
+﻿@{
+    ViewBag.Title = "Clients Search";
+}
+<div class="filtros">
+    <form id="frmFiltros">
+        <input class="filtro" type="text" id="filterId" placeholder="Id Filter" tabindex=1 />
+        <input class="filtro" type="text" id="filterName" placeholder="Name Filter" tabindex=2 />
+        <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=3 />
+        <br />
+        <select class="filtro" id="filterRole" tabindex=4>
+            <option value="" disabled selected>Role Filter</option>
+            <option value="all">&lt;All&gt;</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select>
+        <br />
+        <input class="filtroApply" type="submit" value="Apply Filter" id="btnSearch" tabindex=5 />
+    </form>
+    <hr />
+    <label class="filroLabel">Rows Per Page</label>
+    <select id="filasPorPagina">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+    </select>
+    <hr />
+    <label class="filroLabel">Total Records: </label>
+    <label class="filroLabel" id="totalregistros"></label>
+    <br />
+    <label class="filroLabel">Total Pages: </label>
+    <label class="filroLabel" id="totalpaginas"></label>
+    <hr />
+    <label class="filroLabel">Actual Page: </label>
+    <label class="filroLabel" id="paginaactual"></label>
+    <br />
+    <input class="filtroNextPrevButton" type="button" value="<" id="prevPage" />
+    <input class="filtroNextPrevButton" type="button" value=">" id="nextPage" />
+</div>
 
-<form id="frmFiltros" class="header-bar clearfix">
-    <fieldset class="col-md-5">
-        <div class="row">
-            <div class="form-group col-md-6">
-                <input type="text" id="filterId" placeholder="Id Filter" tabindex=1 />
-            </div>
-            <div class="form-group col-md-6">
-                <input type="text" id="filterName" placeholder="Name Filter" tabindex=2 />
-            </div>
-            <div class="form-group col-md-6">
-                <input type="text" id="filterEmail" placeholder="Email Filter" tabindex=3/>
-            </div>
-            <div class="form-group col-md-6">
-                <select id="filterRole" tabindex=4>
-                    <option value="" disabled selected>Role Filter</option>
-                    <option value="all">&lt;All&gt;</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                </select>
-            </div>
-            <input type="submit" value="Search" id="btnSearch" tabindex=5 />
-        </div>
-    </fieldset>
-</form>
-
-<div id="seachMessages"></div>
+<div id="seachMessages" class="Centrado Message"></div>
 
 <div class="contentTable">
     <table class="Table col-md-12" id="tClientes">
         <thead class="thead">
             <tr class="tr">
-                <th class="th" id="colId"><a href="#">Id</a></th>
-                <th class="th" id="colName"><a href="#">Name</a></th>
-                <th class="th" id="colEmail"><a href="#">Email</a></th>
-                <th class="th" id="colRole"><a href="#">Role</a></th>
+                <th class="th" id="colId"><a href="#">Id</a><i></i></th>
+                <th class="th" id="colName"><a href="#">Name</a><i></i></th>
+                <th class="th" id="colEmail"><a href="#">Email</a><i></i></th>
+                <th class="th" id="colRole"><a href="#">Role</a><i></i></th>
             </tr>
         </thead>
         <tbody class="tbody"></tbody>
     </table>
 </div>
 
-<fieldset id="fPaginado">
-    <label>Rows Per Page</label>
-    <select id="filasPorPagina">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-    </select>
-    <br />
-    <label>Total Records: </label>
-    <label id="totalregistros"></label>
-    <br />
-    <label>Total Pages: </label>
-    <label id="totalpaginas"></label>
-    <br />
-    <label>Actual Page: </label>
-    <label id="paginaactual"></label>
-    <input type="button" value="<-" id="prevPage" />
-    <input type="button" value="->" id="nextPage" />
-</fieldset>
-
 <script>
     var ordenamientoAsc = true;
-    var ordenamientoCol = "id";
-    var paginaActual = 1;
+    var ordenamientoCol = "";
+    var paginaActual = 0;
 
     $(document).ready(function () {
         $('#paginaactual').text(paginaActual);
+        SetDefaultOrder();
         LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
     });
 
     $("#frmFiltros").submit(function (event) {
         event.preventDefault();
-        paginaActual = 1;
+        SetDefaultOrder();
         LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
     });
 
@@ -99,6 +92,8 @@
         paginaActual = 1;
         ordenamientoAsc = (ordenamientoCol == "id") ? !ordenamientoAsc : true;
         ordenamientoCol = "id";
+        RemoveOrderIcons();
+        $(this).find('i').addClass((ordenamientoAsc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
         LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
     });
 
@@ -106,6 +101,8 @@
         paginaActual = 1;
         ordenamientoAsc = (ordenamientoCol == "name") ? !ordenamientoAsc : true;
         ordenamientoCol = "name";
+        RemoveOrderIcons();
+        $(this).find('i').addClass((ordenamientoAsc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
         LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
     });
 
@@ -113,6 +110,8 @@
         paginaActual = 1;
         ordenamientoAsc = (ordenamientoCol == "email") ? !ordenamientoAsc : true;
         ordenamientoCol = "email";
+        RemoveOrderIcons();
+        $(this).find('i').addClass((ordenamientoAsc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
         LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
     });
 
@@ -120,6 +119,8 @@
         paginaActual = 1;
         ordenamientoAsc = (ordenamientoCol == "role") ? !ordenamientoAsc : true;
         ordenamientoCol = "role";
+        RemoveOrderIcons();
+        $(this).find('i').addClass((ordenamientoAsc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
         LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
     });
 
@@ -129,7 +130,7 @@
         pagina = 1) {
         $('#Loader').show();
         $('#tClientes').hide();
-        $('#fPaginado').hide();
+        $('.filtros :input').prop("disabled", true);
         $('#seachMessages').text('');
         $('#tClientes > tbody').empty();
         var id = 'id=' + $('#filterId').val();
@@ -148,9 +149,10 @@
                 });
                 $('#tClientes > tbody').append(trHTML);
                 $('#tClientes').show();
-                $('#fPaginado').show();
+                $('.filtros :input').prop("disabled", false);
             } else {
                 $('#seachMessages').text('No records found');
+                $('.filtros :input').prop("disabled", false);
             }
 
             // se acomoda el paginado (next)
@@ -170,6 +172,7 @@
             $('#Loader').hide();
         }).fail(function (data, textStatus, xhr) {
             $('#Loader').hide();
+            $('.filtros :input').prop("disabled", false);
 
             // TODO: mostrar bien el error
             $('#seachMessages').text('Error: ' + textStatus);
@@ -177,5 +180,17 @@
             console.log(textStatus);
             console.log(xhr);
         });
+    }
+
+    function RemoveOrderIcons() {
+        $('#tClientes .th i').removeClass('fa fa-caret-up');
+        $('#tClientes .th i').removeClass('fa fa-caret-down');
+    }
+
+    function SetDefaultOrder() {
+        RemoveOrderIcons();
+        $('#tClientes #colId i').addClass('fa fa-caret-up');
+        ordenamientoCol = "id";
+        paginaActual = 1;
     }
 </script>

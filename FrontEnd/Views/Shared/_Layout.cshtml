@@ -15,12 +15,14 @@
                 @Html.ActionLink("JLE Altran Assessment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+                
             </div>
         </div>
     </div>
+    <div class="Title">@ViewBag.Title</div> 
     <div class="body-content">
         @RenderBody()
-        <div id="Loader">
+        <div id="Loader" style="position: fixed; top: 50%; left: 50%;">
             <div id="Loader_1" class="Loader"></div>
             <div id="Loader_2" class="Loader"></div>
             <div id="Loader_3" class="Loader"></div>
