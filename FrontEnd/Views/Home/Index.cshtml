@@ -1,196 +1,62 @@
 ﻿@{
     ViewBag.Title = "Clients Search";
 }
-<div class="filtros">
-    <form id="frmFiltros">
-        <input class="filtro" type="text" id="filterId" placeholder="Id Filter" tabindex=1 />
-        <input class="filtro" type="text" id="filterName" placeholder="Name Filter" tabindex=2 />
-        <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=3 />
-        <br />
-        <select class="filtro" id="filterRole" tabindex=4>
-            <option value="" disabled selected>Role Filter</option>
-            <option value="all">&lt;All&gt;</option>
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
+<div id="page">
+    <div class="filtros">
+        <form id="frmFiltros">
+            <input class="filtro" type="text" id="filterId" placeholder="Id Filter" tabindex=1 />
+            <input class="filtro" type="text" id="filterName" placeholder="Name Filter" tabindex=2 />
+            <input class="filtro filterEmail" type="text" id="filterEmail" placeholder="Email Filter" tabindex=3 />
+            <br />
+            <select class="filtro" id="filterRole" tabindex=4>
+                <option value="" disabled selected>Role Filter</option>
+                <option value="all">&lt;All&gt;</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            <br />
+            <input class="filtroApply" type="submit" value="Apply Filter" id="btnSearch" tabindex=5 />
+        </form>
+        <hr />
+        <label class="filroLabel">Rows Per Page</label>
+        <select id="filasPorPagina">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
         </select>
+        <hr />
+        <label class="filroLabel">Total Records: </label>
+        <label class="filroLabel" id="totalregistros"></label>
         <br />
-        <input class="filtroApply" type="submit" value="Apply Filter" id="btnSearch" tabindex=5 />
-    </form>
-    <hr />
-    <label class="filroLabel">Rows Per Page</label>
-    <select id="filasPorPagina">
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-    </select>
-    <hr />
-    <label class="filroLabel">Total Records: </label>
-    <label class="filroLabel" id="totalregistros"></label>
-    <br />
-    <label class="filroLabel">Total Pages: </label>
-    <label class="filroLabel" id="totalpaginas"></label>
-    <hr />
-    <label class="filroLabel">Actual Page: </label>
-    <label class="filroLabel" id="paginaactual"></label>
-    <br />
-    <input class="filtroNextPrevButton" type="button" value="<" id="prevPage" />
-    <input class="filtroNextPrevButton" type="button" value=">" id="nextPage" />
+        <label class="filroLabel">Total Pages: </label>
+        <label class="filroLabel" id="totalpaginas"></label>
+        <hr />
+        <label class="filroLabel">Actual Page: </label>
+        <label class="filroLabel" id="paginaactual"></label>
+        <br />
+        <input class="filtroNextPrevButton" type="button" value="<" id="prevPage" />
+        <input class="filtroNextPrevButton" type="button" value=">" id="nextPage" />
+    </div>
+
+    <div id="seachMessages" class="Centrado Message"></div>
+
+    <div class="contentTable">
+        <table class="Table col-md-12" id="tClientes">
+            <thead class="thead">
+                <tr class="tr">
+                    <th class="th" id="colId"><a href="#">Id</a><i></i></th>
+                    <th class="th" id="colName"><a href="#">Name</a><i></i></th>
+                    <th class="th" id="colEmail"><a href="#">Email</a><i></i></th>
+                    <th class="th" id="colRole"><a href="#">Role</a><i></i></th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
+    </div>
 </div>
-
-<div id="seachMessages" class="Centrado Message"></div>
-
-<div class="contentTable">
-    <table class="Table col-md-12" id="tClientes">
-        <thead class="thead">
-            <tr class="tr">
-                <th class="th" id="colId"><a href="#">Id</a><i></i></th>
-                <th class="th" id="colName"><a href="#">Name</a><i></i></th>
-                <th class="th" id="colEmail"><a href="#">Email</a><i></i></th>
-                <th class="th" id="colRole"><a href="#">Role</a><i></i></th>
-            </tr>
-        </thead>
-        <tbody class="tbody"></tbody>
-    </table>
-</div>
-
+<script src="~/Scripts/App/Clientes.js"></script>
+<script src="~/Scripts/Dto/OrdenamientoDto.js"></script>
+<script src="~/Scripts/Dto/PaginacionDto.js"></script>
 <script>
-    var ordenamientoAsc = true;
-    var ordenamientoCol = "";
-    var paginaActual = 0;
-
-    $(document).ready(function () {
-        $('#paginaactual').text(paginaActual);
-        SetDefaultOrder();
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    $("#frmFiltros").submit(function (event) {
-        event.preventDefault();
-        SetDefaultOrder();
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    $("#filasPorPagina").change(function () {
-        $('#paginaactual').text(paginaActual);
-        paginaActual = 1;
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    $("#nextPage").click(function () {
-        paginaActual += 1;
-        $('#paginaactual').text(paginaActual);
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    $("#prevPage").click(function () {
-        paginaActual -= 1;
-        $('#paginaactual').text(paginaActual);
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    $("#colId").click(function () {
-        paginaActual = 1;
-        ordenamientoAsc = (ordenamientoCol == "id") ? !ordenamientoAsc : true;
-        ordenamientoCol = "id";
-        RemoveOrderIcons();
-        $(this).find('i').addClass((ordenamientoAsc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    $("#colName").click(function () {
-        paginaActual = 1;
-        ordenamientoAsc = (ordenamientoCol == "name") ? !ordenamientoAsc : true;
-        ordenamientoCol = "name";
-        RemoveOrderIcons();
-        $(this).find('i').addClass((ordenamientoAsc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    $("#colEmail").click(function () {
-        paginaActual = 1;
-        ordenamientoAsc = (ordenamientoCol == "email") ? !ordenamientoAsc : true;
-        ordenamientoCol = "email";
-        RemoveOrderIcons();
-        $(this).find('i').addClass((ordenamientoAsc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    $("#colRole").click(function () {
-        paginaActual = 1;
-        ordenamientoAsc = (ordenamientoCol == "role") ? !ordenamientoAsc : true;
-        ordenamientoCol = "role";
-        RemoveOrderIcons();
-        $(this).find('i').addClass((ordenamientoAsc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
-        LoadRows(ordenamientoAsc, ordenamientoCol, paginaActual);
-    });
-
-    function LoadRows(
-        ordenAsc = true,
-        orderCol = "id",
-        pagina = 1) {
-        $('#Loader').show();
-        $('#tClientes').hide();
-        $('.filtros :input').prop("disabled", true);
-        $('#seachMessages').text('');
-        $('#tClientes > tbody').empty();
-        var id = 'id=' + $('#filterId').val();
-        var name = 'name=' + $('#filterName').val();
-        var email = 'email=' + $('#filterEmail').val();
-        var role = ($('#filterRole')[0].selectedIndex < 2) ? 'role=' : 'role=' + $('#filterRole').val();
-        var filasPorPagina = 'filasPorPagina=' + $('#filasPorPagina').val();
-        $.getJSON("/api/clients?" + id + "&" + name + "&" + email + "&" + role + "&pagina=" + pagina + "&" + filasPorPagina + "&Asc=" + ordenAsc + "&ColumnaOrdenamiento=" + orderCol, function (data) {
-            $('#totalregistros').text(data.CantidadRegistros);
-            $('#totalpaginas').text(data.CantidadPaginas);
-            $('#paginaactual').text(data.PaginaActual);
-            if (data.Lista.length > 0) {
-                var trHTML = '';
-                $.each(data.Lista, function () {
-                    trHTML += '<tr class="tr"><td class="td"><a href="#">' + this['Id'] + '</a></td><td class="td">' + this['Name'] + '</td><td class="td">' + this['Email'] + '</td><td class="td">' + this['Role'] + '</td></tr>';
-                });
-                $('#tClientes > tbody').append(trHTML);
-                $('#tClientes').show();
-                $('.filtros :input').prop("disabled", false);
-            } else {
-                $('#seachMessages').text('No records found');
-                $('.filtros :input').prop("disabled", false);
-            }
-
-            // se acomoda el paginado (next)
-            if (pagina >= data.CantidadPaginas) {
-                $("#nextPage").prop("disabled", true);
-            } else {
-                $("#nextPage").prop("disabled", false);
-            }
-
-            // se acomoda el paginado (prev)
-            if (pagina == 1) {
-                $("#prevPage").prop("disabled", true);
-            } else {
-                $("#prevPage").prop("disabled", false);
-            }
-
-            $('#Loader').hide();
-        }).fail(function (data, textStatus, xhr) {
-            $('#Loader').hide();
-            $('.filtros :input').prop("disabled", false);
-
-            // TODO: mostrar bien el error
-            $('#seachMessages').text('Error: ' + textStatus);
-            console.log(data);
-            console.log(textStatus);
-            console.log(xhr);
-        });
-    }
-
-    function RemoveOrderIcons() {
-        $('#tClientes .th i').removeClass('fa fa-caret-up');
-        $('#tClientes .th i').removeClass('fa fa-caret-down');
-    }
-
-    function SetDefaultOrder() {
-        RemoveOrderIcons();
-        $('#tClientes #colId i').addClass('fa fa-caret-up');
-        ordenamientoCol = "id";
-        paginaActual = 1;
-    }
+    var clientesSearch = new ClientesSearch($("#page"), $('#Loader'));
 </script>

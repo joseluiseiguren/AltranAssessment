@@ -21,7 +21,6 @@
     </div>
     <div class="Title">@ViewBag.Title</div> 
     <div class="body-content">
-        @RenderBody()
         <div id="Loader" style="position: fixed; top: 50%; left: 50%;">
             <div id="Loader_1" class="Loader"></div>
             <div id="Loader_2" class="Loader"></div>
@@ -32,6 +31,7 @@
             <div id="Loader_7" class="Loader"></div>
             <div id="Loader_8" class="Loader"></div>
         </div>
+        @RenderBody()
     </div>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
