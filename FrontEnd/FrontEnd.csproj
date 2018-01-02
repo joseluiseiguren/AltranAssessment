@@ -195,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infraestructure\ModelMapping.cs" />
+    <Compile Include="Infraestructure\NinjectDI.cs" />
     <Compile Include="Interfaces\IClientsRepository.cs" />
     <Compile Include="Interfaces\IPoliciesRepository.cs" />
     <Compile Include="Models\Client.cs" />

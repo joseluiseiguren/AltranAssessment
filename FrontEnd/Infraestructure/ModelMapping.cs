@@ -47,5 +47,18 @@
 
             return mapper.Map<IEnumerable<Policy>, IEnumerable<PolicyDTO>>(policy);
         }
+
+        /// <summary>
+        /// devuelve un clientDTO a partir de un modelo
+        /// </summary>
+        public static ClientDTO ToDto(this Client client)
+        {
+            if (client == null)
+            {
+                return null;
+            }
+
+            return mapper.Map<Client, ClientDTO>(client);
+        }
     }
 }

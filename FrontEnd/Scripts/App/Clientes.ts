@@ -288,7 +288,8 @@
 
     private RenderRow(data): string{
         var trHTML = '';
-        trHTML = '<tr class="tr"><td class="td"><a href="#">' + data.Id + '</a></td><td class="td">' + data.Name + '</td><td class="td">' + data.Email + '</td><td class="td">' + data.Role + '</td></tr>';
+        var urlPolicy = 'clients/' + data.Id + '/policies';
+        trHTML = '<tr class="tr"><td class="td"><a target="_blank" href="' + urlPolicy + '">' + data.Id + '</a></td><td class="td">' + data.Name + '</td><td class="td">' + data.Email + '</td><td class="td">' + data.Role + '</td></tr>';
         return trHTML;
     }
 

@@ -26,6 +26,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -39,6 +40,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -53,6 +55,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -66,6 +69,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -79,6 +83,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -95,6 +100,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -111,6 +117,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -127,6 +134,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -143,6 +151,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -159,6 +168,7 @@
                 that.GetAmountInsuredFilter(),
                 that.GetEmailFilter(),
                 that.GetInstallmentPaymentFilter(),
+                that.GetInceptionDateFilter(),
                 that.paginacion,
                 that.ordenamiento);
         });
@@ -169,13 +179,15 @@
         amountInsured: number,
         email: string,
         installmentPayment: boolean,
+        inceptionDate: Date,
         paginado: PaginacionDto,
         orden: OrdenamientoDto): void {
         let that = this;
         var url = "/api/policies?clientid=" + this.clientId +
             "&policyId=" + policyId +
             ((amountInsured > 0) ? ("&amountInsured=" + amountInsured) : ('')) +
-            ((installmentPayment != null) ? ("&installmentPayment=" + installmentPayment) : ('')) +
+            "&installmentPayment=" + installmentPayment +
+            "&inceptionDate=" + inceptionDate +
             "&email=" + email +
             "&pagina=" + paginado.pagina +
             "&filasPorPagina=" + paginado.filasPorPagina +
@@ -324,5 +336,9 @@
             return null;
         }
         return this.page.find('#filterInstallmentPayment').val();
+    }
+
+    private GetInceptionDateFilter(): Date {
+        return this.page.find('#filterInceptionDate').val();
     }
 }

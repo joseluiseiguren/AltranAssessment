@@ -94,18 +94,46 @@
 			"id": "846bde16-98e8-e5fc-5fe6-d353182ed1c3",
 			"headers": "",
 			"headerData": [],
-			"url": "http://{{hostFrontEnd}}/api/policies?clientId=a0ece5db-cd14-4f21-812f-966633e7be86&policyId=6f514ec4-1726-4628-974d-20afe4da130c&pagina=1&filasporpagina=10&asc=true&ColumnaOrdenamiento=clientId",
+			"url": "http://{{hostFrontEnd}}/api/policies?clientId=e8fd159b-57c4-4d36-9bd7-a59ca13057bb&policyId=&amountInsured=&installmentPayment=&inceptionDate=2015-10-27&email=&pagina=1&filasporpagina=10&asc=true&ColumnaOrdenamiento=Id",
 			"queryParams": [
 				{
 					"key": "clientId",
-					"value": "a0ece5db-cd14-4f21-812f-966633e7be86",
+					"value": "e8fd159b-57c4-4d36-9bd7-a59ca13057bb",
 					"equals": true,
 					"description": "",
 					"enabled": true
 				},
 				{
 					"key": "policyId",
-					"value": "6f514ec4-1726-4628-974d-20afe4da130c",
+					"value": "",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "amountInsured",
+					"value": "",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "installmentPayment",
+					"value": "",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "inceptionDate",
+					"value": "2015-10-27",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "",
 					"equals": true,
 					"description": "",
 					"enabled": true
@@ -133,7 +161,7 @@
 				},
 				{
 					"key": "ColumnaOrdenamiento",
-					"value": "clientId",
+					"value": "Id",
 					"equals": true,
 					"description": "",
 					"enabled": true
@@ -148,7 +176,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1514908034701,
+			"time": 1514919029507,
 			"name": "GetPoliciesByFilter",
 			"description": "",
 			"collectionId": "b8d5a5a5-244d-9145-cea6-af0af429e063",

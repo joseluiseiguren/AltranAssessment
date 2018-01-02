@@ -1,4 +1,4 @@
-﻿namespace FrontEnd.Tests.RepositoriesMock
+﻿namespace FrontEnd.Tests.Controllers.RepositoriesMock
 {
     using Interfaces;
     using System.Collections.Generic;

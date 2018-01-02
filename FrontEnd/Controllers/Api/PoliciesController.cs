@@ -29,6 +29,7 @@
                                     decimal? amountInsured = null,
                                     string email = null,
                                     bool? installmentPayment = null,
+                                    DateTime? inceptionDate = null,
                                     [FromUri]PaginadoDTO paginado = null,
                                     [FromUri]OrdenamientoDTO ordenamiento = null)
         {
@@ -82,6 +83,14 @@
             if (!string.IsNullOrEmpty(email))
             {
                 policies = policies.Where(p => p.Email.ToUpper().StartsWith(email.ToUpper()));
+            }
+
+            // filtro por inception date (equals)
+            if (inceptionDate != null)
+            {
+                policies = policies.Where(p => p.InceptionDate.Year.Equals(inceptionDate.Value.Year))
+                                   .Where(p => p.InceptionDate.Month.Equals(inceptionDate.Value.Month))
+                                   .Where(p => p.InceptionDate.Day.Equals(inceptionDate.Value.Day));
             }
 
             // cantidad de registros (sin paginacion)

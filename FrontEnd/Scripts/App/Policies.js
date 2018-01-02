@@ -13,32 +13,32 @@ var PoliciesSearch = (function () {
         // inicio de la pagina
         page.ready(function () {
             that.SetDefaultOrder();
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // submit de filtros
         page.find("#frmFiltros").submit(function (event) {
             event.preventDefault();
             that.SetDefaultOrder();
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // cambio en el combo de filas por pagina
         page.find("#filasPorPagina").change(function () {
             that.paginacion.pagina = 1;
             that.SetPaginaActual(that.paginacion.pagina);
             that.paginacion.filasPorPagina = that.GetFilasPorPagina();
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // siguiente pagina
         page.find("#nextPage").click(function () {
             that.paginacion.pagina += 1;
             that.SetPaginaActual(that.paginacion.pagina);
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // pagina anterior
         page.find("#prevPage").click(function () {
             that.paginacion.pagina -= 1;
             that.SetPaginaActual(that.paginacion.pagina);
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // ordenamiento por id
         page.find("#colPolicyId").click(function () {
@@ -47,7 +47,7 @@ var PoliciesSearch = (function () {
             that.ordenamiento.columnaOrdenamiento = "id";
             that.RemoveOrderIcons();
             (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // ordenamiento por amount insured
         page.find("#colAmount").click(function () {
@@ -56,7 +56,7 @@ var PoliciesSearch = (function () {
             that.ordenamiento.columnaOrdenamiento = "AmountInsured";
             that.RemoveOrderIcons();
             (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // ordenamiento por email
         page.find("#colEmail").click(function () {
@@ -65,7 +65,7 @@ var PoliciesSearch = (function () {
             that.ordenamiento.columnaOrdenamiento = "Email";
             that.RemoveOrderIcons();
             (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // ordenamiento por inception date
         page.find("#colInceptionDate").click(function () {
@@ -74,7 +74,7 @@ var PoliciesSearch = (function () {
             that.ordenamiento.columnaOrdenamiento = "InceptionDate";
             that.RemoveOrderIcons();
             (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
         // ordenamiento por installment payment
         page.find("#colInstallmentPayment").click(function () {
@@ -83,15 +83,16 @@ var PoliciesSearch = (function () {
             that.ordenamiento.columnaOrdenamiento = "InstallmentPayment";
             that.RemoveOrderIcons();
             (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.paginacion, that.ordenamiento);
+            that.QueryData(that.GetPolicyIdFilter(), that.GetAmountInsuredFilter(), that.GetEmailFilter(), that.GetInstallmentPaymentFilter(), that.GetInceptionDateFilter(), that.paginacion, that.ordenamiento);
         });
     }
-    PoliciesSearch.prototype.QueryData = function (policyId, amountInsured, email, installmentPayment, paginado, orden) {
+    PoliciesSearch.prototype.QueryData = function (policyId, amountInsured, email, installmentPayment, inceptionDate, paginado, orden) {
         var that = this;
         var url = "/api/policies?clientid=" + this.clientId +
             "&policyId=" + policyId +
             ((amountInsured > 0) ? ("&amountInsured=" + amountInsured) : ('')) +
-            ((installmentPayment != null) ? ("&installmentPayment=" + installmentPayment) : ('')) +
+            "&installmentPayment=" + installmentPayment +
+            "&inceptionDate=" + inceptionDate +
             "&email=" + email +
             "&pagina=" + paginado.pagina +
             "&filasPorPagina=" + paginado.filasPorPagina +
@@ -220,6 +221,9 @@ var PoliciesSearch = (function () {
             return null;
         }
         return this.page.find('#filterInstallmentPayment').val();
+    };
+    PoliciesSearch.prototype.GetInceptionDateFilter = function () {
+        return this.page.find('#filterInceptionDate').val();
     };
     return PoliciesSearch;
 }());
