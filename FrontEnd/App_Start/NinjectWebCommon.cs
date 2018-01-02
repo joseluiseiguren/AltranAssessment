@@ -50,6 +50,7 @@ namespace FrontEnd.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                //System.Web.Http.GlobalConfiguration.Configuration.DependencyResolver = new Ninject.Web.WebApi.NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -66,7 +67,7 @@ namespace FrontEnd.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IClientsRepository>().To<Dal.WebService.ClientsRepository>().InSingletonScope();
-
+            kernel.Bind<IPoliciesRepository>().To<Dal.WebService.PoliciesRepository>().InSingletonScope();
         }
     }
 }

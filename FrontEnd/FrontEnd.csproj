@@ -182,18 +182,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\ClientsController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Api\PoliciesController.cs" />
+    <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\PoliciesController.cs" />
     <Compile Include="Dal\WebService\ClientsRepository.cs" />
+    <Compile Include="Dal\WebService\PoliciesRepository.cs" />
     <Compile Include="Dto\ClientDTO.cs" />
     <Compile Include="Dto\GenericListDTO.cs" />
     <Compile Include="Dto\OrdenamientoDTO.cs" />
+    <Compile Include="Dto\PolicyDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infraestructure\ModelMapping.cs" />
     <Compile Include="Interfaces\IClientsRepository.cs" />
+    <Compile Include="Interfaces\IPoliciesRepository.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Dto\PaginadoDTO.cs" />
+    <Compile Include="Models\Policy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,8 +240,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Clients\Search.cshtml" />
     <Content Include="Scripts\tsconfig.json" />
+    <Content Include="Views\Policies\GetByClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -257,10 +264,12 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\App\Clientes.ts" />
-    <TypeScriptCompile Include="Scripts\Dto\BusquedaGenericaDto.ts" />
+    <TypeScriptCompile Include="Scripts\App\Policies.ts" />
     <TypeScriptCompile Include="Scripts\Dto\ClientDto.ts" />
     <TypeScriptCompile Include="Scripts\Dto\OrdenamientoDto.ts" />
     <TypeScriptCompile Include="Scripts\Dto\PaginacionDto.ts" />
+    <TypeScriptCompile Include="Scripts\Dto\PolicyDto.ts" />
+    <TypeScriptCompile Include="Scripts\Globales.ts" />
     <TypeScriptCompile Include="Scripts\Typings\Boostrap\index.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\JQuery\jquery.d.ts" />
   </ItemGroup>

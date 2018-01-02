@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace FrontEnd.Controllers
 {
-    public class HomeController : Controller
+    public class ClientsController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Search()
         {
             return View();
         }

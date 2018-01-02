@@ -45,7 +45,7 @@ var ClientesSearch = (function () {
             that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == "id") ? !that.ordenamiento.asc : true;
             that.ordenamiento.columnaOrdenamiento = "id";
             that.RemoveOrderIcons();
-            $(this).find('i').addClass((that.ordenamiento.asc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
+            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
             that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
         });
         // ordenamiento por name
@@ -54,7 +54,7 @@ var ClientesSearch = (function () {
             that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == "name") ? !that.ordenamiento.asc : true;
             that.ordenamiento.columnaOrdenamiento = "name";
             that.RemoveOrderIcons();
-            $(this).find('i').addClass((that.ordenamiento.asc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
+            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
             that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
         });
         // ordenamiento por email
@@ -63,7 +63,7 @@ var ClientesSearch = (function () {
             that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == "email") ? !that.ordenamiento.asc : true;
             that.ordenamiento.columnaOrdenamiento = "email";
             that.RemoveOrderIcons();
-            $(this).find('i').addClass((that.ordenamiento.asc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
+            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
             that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
         });
         // ordenamiento por role
@@ -72,7 +72,7 @@ var ClientesSearch = (function () {
             that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == "role") ? !that.ordenamiento.asc : true;
             that.ordenamiento.columnaOrdenamiento = "role";
             that.RemoveOrderIcons();
-            $(this).find('i').addClass((that.ordenamiento.asc) ? 'fa fa-caret-up' : 'fa fa-caret-down');
+            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
             that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
         });
     }
@@ -197,13 +197,12 @@ var ClientesSearch = (function () {
         return trHTML;
     };
     ClientesSearch.prototype.RemoveOrderIcons = function () {
-        this.page.find('#tClientes .th i').removeClass('fa fa-caret-up');
-        this.page.find('#tClientes .th i').removeClass('fa fa-caret-down');
+        TableHeaderRemoveOrderIcons(this.page.find('#tClientes .th i'));
     };
     ClientesSearch.prototype.SetDefaultOrder = function () {
         var that = this;
         that.RemoveOrderIcons();
-        this.page.find('#tClientes #colId i').addClass('fa fa-caret-up');
+        TableHeaderOrderIconAsc(this.page.find('#tClientes #colId i'));
         this.ordenamiento.columnaOrdenamiento = "id";
         this.paginacion.pagina = 1;
     };

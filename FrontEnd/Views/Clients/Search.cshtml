@@ -6,7 +6,7 @@
         <form id="frmFiltros">
             <input class="filtro" type="text" id="filterId" placeholder="Id Filter" tabindex=1 />
             <input class="filtro" type="text" id="filterName" placeholder="Name Filter" tabindex=2 />
-            <input class="filtro filterEmail" type="text" id="filterEmail" placeholder="Email Filter" tabindex=3 />
+            <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=3 />
             <br />
             <select class="filtro" id="filterRole" tabindex=4>
                 <option value="" disabled selected>Role Filter</option>
@@ -44,7 +44,7 @@
         <table class="Table col-md-12" id="tClientes">
             <thead class="thead">
                 <tr class="tr">
-                    <th class="th" id="colId"><a href="#">Id</a><i></i></th>
+                    <th class="th" id="colId"><a href="#">Client Id</a><i></i></th>
                     <th class="th" id="colName"><a href="#">Name</a><i></i></th>
                     <th class="th" id="colEmail"><a href="#">Email</a><i></i></th>
                     <th class="th" id="colRole"><a href="#">Role</a><i></i></th>
@@ -57,6 +57,7 @@
 <script src="~/Scripts/App/Clientes.js"></script>
 <script src="~/Scripts/Dto/OrdenamientoDto.js"></script>
 <script src="~/Scripts/Dto/PaginacionDto.js"></script>
+<script src="~/Scripts/Globales.js"></script>
 <script>
     var clientesSearch = new ClientesSearch($("#page"), $('#Loader'));
 </script>

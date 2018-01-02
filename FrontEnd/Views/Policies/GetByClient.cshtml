@@ -1,0 +1,71 @@
+﻿@model FrontEnd.Dto.ClientDTO
+
+@{
+    ViewBag.Title = "Policies for Client: " + Model.Id;
+}
+
+<div id="page">
+    <div class="filtros">
+        <form id="frmFiltros">
+            <input class="filtro" type="text" id="filterId" placeholder=" Policy Id Filter" tabindex=1 />
+            <input class="filtro" type="text" id="filterAmount" placeholder="Amount Filter" tabindex=2 />
+            <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=4 />
+            <label class="filroLabelUp">Inception Date Filter</label>
+            <input class="filtro filtroDate" type="date" id="filterInceptionDate" tabindex=3 />
+            <br />
+            <select class="filtro" id="filterInstallmentPayment" tabindex=5>
+                <option value="" disabled selected>Installment Payment Filter</option>
+                <option value="all">&lt;All&gt;</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br />
+            <input class="filtroApply" type="submit" value="Apply Filter" id="btnSearch" tabindex=5 />
+        </form>
+        <hr />
+        <label class="filroLabel">Rows Per Page</label>
+        <select id="filasPorPagina">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+        </select>
+        <hr />
+        <label class="filroLabel">Total Records: </label>
+        <label class="filroLabel" id="totalregistros"></label>
+        <br />
+        <label class="filroLabel">Total Pages: </label>
+        <label class="filroLabel" id="totalpaginas"></label>
+        <hr />
+        <label class="filroLabel">Actual Page: </label>
+        <label class="filroLabel" id="paginaactual"></label>
+        <br />
+        <input class="filtroNextPrevButton" type="button" value="<" id="prevPage" />
+        <input class="filtroNextPrevButton" type="button" value=">" id="nextPage" />
+    </div>
+
+    <div id="seachMessages" class="Centrado Message"></div>
+
+    <div class="contentTable">
+        <table class="Table col-md-12" id="tPolicies">
+            <thead class="thead">
+                <tr class="tr">
+                    <th class="th" id="colPolicyId"><a href="#">Policy Id</a><i></i></th>
+                    <th class="th" id="colAmount"><a href="#">Amount Insured</a><i></i></th>
+                    <th class="th" id="colEmail"><a href="#">Email</a><i></i></th>
+                    <th class="th" id="colInceptionDate"><a href="#">Inception Date</a><i></i></th>
+                    <th class="th" id="colInstallmentPayment"><a href="#">Installment Payment</a><i></i></th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/Dto/ClientDto.js"></script>
+<script src="~/Scripts/App/Policies.js"></script>
+<script src="~/Scripts/Dto/OrdenamientoDto.js"></script>
+<script src="~/Scripts/Dto/PaginacionDto.js"></script>
+<script src="~/Scripts/Globales.js"></script>
+<script>
+    var policiesSearch = new PoliciesSearch($("#page"), $('#Loader'), '@Model.Id');
+</script>
+

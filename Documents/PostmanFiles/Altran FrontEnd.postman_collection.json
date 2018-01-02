@@ -1,75 +1,158 @@
 {
-	"info": {
-		"name": "Altran FrontEnd",
-		"_postman_id": "0bc3434f-84ab-a260-0bfd-ee797c9f37e1",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "GetClientsByFilter",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://{{hostFrontEnd}}/api/clients?id&name=a&email&role=admin",
-					"protocol": "http",
-					"host": [
-						"{{hostFrontEnd}}"
-					],
-					"path": [
-						"api",
-						"clients"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "",
-							"equals": false
-						},
-						{
-							"key": "name",
-							"value": "a",
-							"equals": true
-						},
-						{
-							"key": "email",
-							"value": "",
-							"equals": false
-						},
-						{
-							"key": "role",
-							"value": "admin",
-							"equals": true
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		}
+	"id": "b8d5a5a5-244d-9145-cea6-af0af429e063",
+	"name": "Altran FrontEnd",
+	"description": "",
+	"order": [
+		"7bc3f717-6830-d181-5e27-396188338307",
+		"846bde16-98e8-e5fc-5fe6-d353182ed1c3"
 	],
-	"event": [
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 0,
+	"owner": 0,
+	"public": false,
+	"requests": [
 		{
-			"listen": "prerequest",
-			"script": {
-				"id": "2ec64cd9-f9c1-4d36-86d5-1938c4986a0b",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
+			"id": "7bc3f717-6830-d181-5e27-396188338307",
+			"headers": "",
+			"headerData": [],
+			"url": "http://{{hostFrontEnd}}/api/clients?id=&name=a&email=&role=admin&pagina=1&filasporpagina=10&asc=true&ColumnaOrdenamiento=id",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "a",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "admin",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pagina",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filasporpagina",
+					"value": "10",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "asc",
+					"value": "true",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ColumnaOrdenamiento",
+					"value": "id",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1514829884269,
+			"name": "GetClientsByFilter",
+			"description": "",
+			"collectionId": "b8d5a5a5-244d-9145-cea6-af0af429e063",
+			"responses": []
 		},
 		{
-			"listen": "test",
-			"script": {
-				"id": "44f66a6f-c14c-4d1d-95ab-8ac5dd805ecc",
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
+			"id": "846bde16-98e8-e5fc-5fe6-d353182ed1c3",
+			"headers": "",
+			"headerData": [],
+			"url": "http://{{hostFrontEnd}}/api/policies?clientId=a0ece5db-cd14-4f21-812f-966633e7be86&policyId=6f514ec4-1726-4628-974d-20afe4da130c&pagina=1&filasporpagina=10&asc=true&ColumnaOrdenamiento=clientId",
+			"queryParams": [
+				{
+					"key": "clientId",
+					"value": "a0ece5db-cd14-4f21-812f-966633e7be86",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "policyId",
+					"value": "6f514ec4-1726-4628-974d-20afe4da130c",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "pagina",
+					"value": "1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "filasporpagina",
+					"value": "10",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "asc",
+					"value": "true",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "ColumnaOrdenamiento",
+					"value": "clientId",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1514908034701,
+			"name": "GetPoliciesByFilter",
+			"description": "",
+			"collectionId": "b8d5a5a5-244d-9145-cea6-af0af429e063",
+			"responses": []
 		}
 	]
 }

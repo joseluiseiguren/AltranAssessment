@@ -16,13 +16,14 @@
         {
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Client, ClientDTO>();
+                cfg.CreateMap<Policy, PolicyDTO>();
             });
 
             mapper = config.CreateMapper();
         }
 
         /// <summary>
-        /// devuelve una lista de policyDTO a partir de un modelo
+        /// devuelve una lista de clientDTO a partir de un modelo
         /// </summary>
         public static IEnumerable<ClientDTO> ToDto(this IEnumerable<Client> client)
         {
@@ -32,6 +33,19 @@
             }
 
             return mapper.Map<IEnumerable<Client>, IEnumerable<ClientDTO>>(client);
+        }
+
+        /// <summary>
+        /// devuelve una lista de policyDTO a partir de un modelo
+        /// </summary>
+        public static IEnumerable<PolicyDTO> ToDto(this IEnumerable<Policy> policy)
+        {
+            if (policy == null)
+            {
+                return null;
+            }
+
+            return mapper.Map<IEnumerable<Policy>, IEnumerable<PolicyDTO>>(policy);
         }
     }
 }
