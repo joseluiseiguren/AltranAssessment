@@ -10,7 +10,6 @@ namespace BackEnd.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using BackEnd.Interfaces;
 
     /// <summary>
     /// dependency resolver
@@ -18,9 +17,9 @@ namespace BackEnd.App_Start
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
-
+        
         /// <summary>
-        /// Starts the application
+        /// se registran los modulos cuando inicia la aplicacion
         /// </summary>
         public static void Start()
         {
@@ -30,7 +29,7 @@ namespace BackEnd.App_Start
         }
 
         /// <summary>
-        /// Stops the application.
+        /// se cierra la aplicacion
         /// </summary>
         public static void Stop()
         {
@@ -38,9 +37,9 @@ namespace BackEnd.App_Start
         }
 
         /// <summary>
-        /// Creates the kernel that will manage your application.
+        /// se crea el kernel encargado de hacer las DI
         /// </summary>
-        /// <returns>The created kernel.</returns>
+        /// <returns>kernel creado</returns>
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
@@ -60,13 +59,12 @@ namespace BackEnd.App_Start
         }
 
         /// <summary>
-        /// Load your modules or register your services here!
+        /// se hacen los bindings de las interfaces
         /// </summary>
-        /// <param name="kernel">The kernel.</param>
+        /// <param name="kernel">kernel</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IClientsRepository>().To<Dal.WebService.ClientsRepository>().InSingletonScope();
-            kernel.Bind<IPoliciesRepository>().To<Dal.WebService.PoliciesRepository>().InSingletonScope();
+            BackEnd.Infraestructure.Bindings.Binder(kernel);
 
         }
     }

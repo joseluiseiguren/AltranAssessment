@@ -1,186 +1,167 @@
 {
-	"id": "b8d5a5a5-244d-9145-cea6-af0af429e063",
-	"name": "Altran FrontEnd",
-	"description": "",
-	"order": [
-		"7bc3f717-6830-d181-5e27-396188338307",
-		"846bde16-98e8-e5fc-5fe6-d353182ed1c3"
-	],
-	"folders": [],
-	"folders_order": [],
-	"timestamp": 0,
-	"owner": 0,
-	"public": false,
-	"requests": [
+	"variables": [],
+	"info": {
+		"name": "Altran FrontEnd",
+		"_postman_id": "b8d5a5a5-244d-9145-cea6-af0af429e063",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "7bc3f717-6830-d181-5e27-396188338307",
-			"headers": "",
-			"headerData": [],
-			"url": "http://{{hostFrontEnd}}/api/clients?id=&name=a&email=&role=admin&pagina=1&filasporpagina=10&asc=true&ColumnaOrdenamiento=id",
-			"queryParams": [
-				{
-					"key": "id",
-					"value": "",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "name",
-					"value": "a",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "email",
-					"value": "",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "role",
-					"value": "admin",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "pagina",
-					"value": "1",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "filasporpagina",
-					"value": "10",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "asc",
-					"value": "true",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "ColumnaOrdenamiento",
-					"value": "id",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				}
-			],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1514829884269,
 			"name": "GetClientsByFilter",
-			"description": "",
-			"collectionId": "b8d5a5a5-244d-9145-cea6-af0af429e063",
-			"responses": []
+			"request": {
+				"url": {
+					"raw": "http://{{hostFrontEnd}}/api/clients?id=&name=a&email=&role=admin&pagina=1&filasporpagina=10&asc=true&ColumnaOrdenamiento=id",
+					"protocol": "http",
+					"host": [
+						"{{hostFrontEnd}}"
+					],
+					"path": [
+						"api",
+						"clients"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "name",
+							"value": "a",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "email",
+							"value": "",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "role",
+							"value": "admin",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "pagina",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "filasporpagina",
+							"value": "10",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "asc",
+							"value": "true",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "ColumnaOrdenamiento",
+							"value": "id",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"id": "846bde16-98e8-e5fc-5fe6-d353182ed1c3",
-			"headers": "",
-			"headerData": [],
-			"url": "http://{{hostFrontEnd}}/api/policies?clientId=e8fd159b-57c4-4d36-9bd7-a59ca13057bb&policyId=&amountInsured=&installmentPayment=&inceptionDate=2015-10-27&email=&pagina=1&filasporpagina=10&asc=true&ColumnaOrdenamiento=Id",
-			"queryParams": [
-				{
-					"key": "clientId",
-					"value": "e8fd159b-57c4-4d36-9bd7-a59ca13057bb",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "policyId",
-					"value": "",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "amountInsured",
-					"value": "",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "installmentPayment",
-					"value": "",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "inceptionDate",
-					"value": "2015-10-27",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "email",
-					"value": "",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "pagina",
-					"value": "1",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "filasporpagina",
-					"value": "10",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "asc",
-					"value": "true",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "ColumnaOrdenamiento",
-					"value": "Id",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				}
-			],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1514919029507,
 			"name": "GetPoliciesByFilter",
-			"description": "",
-			"collectionId": "b8d5a5a5-244d-9145-cea6-af0af429e063",
-			"responses": []
+			"request": {
+				"url": {
+					"raw": "http://{{hostFrontEnd}}/api/policies?clientId=e8fd159b-57c4-4d36-9bd7-a59ca13057bb&policyId=&amountInsured=&installmentPayment=&inceptionDate=2015-10-27&email=&pagina=1&filasporpagina=10&asc=true&ColumnaOrdenamiento=Id",
+					"protocol": "http",
+					"host": [
+						"{{hostFrontEnd}}"
+					],
+					"path": [
+						"api",
+						"policies"
+					],
+					"query": [
+						{
+							"key": "clientId",
+							"value": "e8fd159b-57c4-4d36-9bd7-a59ca13057bb",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "policyId",
+							"value": "",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "amountInsured",
+							"value": "",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "installmentPayment",
+							"value": "",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "inceptionDate",
+							"value": "2015-10-27",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "email",
+							"value": "",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "pagina",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "filasporpagina",
+							"value": "10",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "asc",
+							"value": "true",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "ColumnaOrdenamiento",
+							"value": "Id",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

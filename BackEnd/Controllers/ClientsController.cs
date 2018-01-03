@@ -32,8 +32,7 @@
         /// obtiene un cliente por ID
         /// </summary>
         [HttpGet]
-        //[Authorize(Roles = "users,admin")]
-        [Aut(Users = "Pedro,Juan")]
+        [CustomAuth(Roles = "users, admin")]
         [ResponseType(typeof(ClientDTO))]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ById(string id)
@@ -51,7 +50,7 @@
         /// obtiene un cliente por username
         /// </summary>
         [HttpGet]
-        //[Authorize(Roles = "users,admin")]
+        [CustomAuth(Roles = "users, admin")]
         [ResponseType(typeof(ClientDTO))]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ByUserName(string username)
@@ -69,17 +68,19 @@
         /// obtiene un cliente por policy number
         /// </summary>
         [HttpGet]
-        //[Authorize(Roles = "admin")]
+        [CustomAuth(Roles = "admin")]
         [ResponseType(typeof(ClientDTO))]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ByPolicyNumber(string policyNumber)
         {
+            // se obtiene la id del cliente a partir del policy number
             var policy = this.policiesRepository.GetById(policyNumber);
             if (policy == null)
             {
                 return this.NotFound();
             }
 
+            // se obtienen todos los datos del cliente a partir del id previamente obtenido
             var client = this.clientsRepository.GetById(policy.ClientId);
             if (client == null)
             {

@@ -3,6 +3,8 @@
     using System.Web.Http;
     using System.Web.Mvc;
     using NLog;
+    using Ninject;
+    using System.Reflection;
 
     /// <summary>
     /// tunning de la app
@@ -30,6 +32,17 @@
             RegisterWebApiFilters(GlobalConfiguration.Configuration.Filters);
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
+        }
+
+        /// <summary>
+        /// dependency resolver para controlers mvc (no webapi)
+        /// </summary>
+        public static IKernel GetDR()
+        {
+            IKernel ninjectDependencyResolver;
+            ninjectDependencyResolver = new StandardKernel();
+            ninjectDependencyResolver.Load(Assembly.GetExecutingAssembly());
+            return ninjectDependencyResolver;
         }
     }
 }

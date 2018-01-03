@@ -8,6 +8,7 @@
     using Infraestructure;
     using Swashbuckle.Swagger.Annotations;
     using System.Net;
+    using BackEnd.Filters;
 
     /// <summary>
     /// controller para el recurso policies
@@ -32,7 +33,7 @@
         /// obtiene una lista de ´policies por username
         /// </summary>
         [HttpGet]
-        //[Authorize(Roles = "admin")]
+        [CustomAuth(Roles = "admin")]
         [ResponseType(typeof(IEnumerable<PolicyDTO>))]
         [SwaggerResponse(HttpStatusCode.NotFound)]
         public IHttpActionResult ByUserName(string username)

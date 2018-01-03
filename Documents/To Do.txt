@@ -1,6 +1,6 @@
 - grillas un row de cada color
 	- unit test: /api/policies
-- usar objeetos typescript ClientDto y PoliciesDto al pedir el json
+- usar objetos typescript ClientDto y PoliciesDto al pedir el json
 - que cambie el color al pasar por arriba de un row
 	- pasar de pagina de clientes a policies
 - usar enum o nameof para os nombres de las columnas en el ordenamiento (typescript), y sacar el harcodeo
@@ -8,3 +8,5 @@
 	- ver si se puede usar ninject para inyectar los controlers (no webapi)
 - validar filtro de amount insured para que no puedan ingresar letras
 	- poner nombre en vez del guid en la pantalla de policies
+- tooltip en filtros
+- limpiar codigo CSS/JS

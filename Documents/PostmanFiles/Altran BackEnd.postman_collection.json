@@ -1,19 +1,17 @@
 {
+	"variables": [],
 	"info": {
 		"name": "Altran BackEnd",
-		"_postman_id": "a21c46e1-c31c-9e99-7b36-a9992a0a99a7",
+		"_postman_id": "15de37a3-416d-e842-63e1-5ee546054fa2",
 		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "GetClientById",
 			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
 				"url": {
-					"raw": "http://{{hostBackEnd}}/api/clients/Byid/a0ece5db-cd14-4f21-812f-966633e7be86",
+					"raw": "http://{{hostBackEnd}}/api/clients/byid?id=a0ece5db-cd14-4f21-812f-966633e7be86",
 					"protocol": "http",
 					"host": [
 						"{{hostBackEnd}}"
@@ -21,22 +19,36 @@
 					"path": [
 						"api",
 						"clients",
-						"Byid",
-						"a0ece5db-cd14-4f21-812f-966633e7be86"
-					]
+						"byid"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "a0ece5db-cd14-4f21-812f-966633e7be86",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
 				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "user",
+						"value": "Britney",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": ""
 			},
 			"response": []
 		},
 		{
-			"name": "GetClientByName",
+			"name": "GetClientByUserName",
 			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
 				"url": {
-					"raw": "http://{{hostBackEnd}}/api/clients/ByUserName?userName=Britney",
+					"raw": "http://{{hostBackEnd}}/api/clients/byusername?username=Merrill",
 					"protocol": "http",
 					"host": [
 						"{{hostBackEnd}}"
@@ -44,16 +56,27 @@
 					"path": [
 						"api",
 						"clients",
-						"ByUserName"
+						"byusername"
 					],
 					"query": [
 						{
-							"key": "userName",
-							"value": "Britney",
-							"equals": true
+							"key": "username",
+							"value": "Merrill",
+							"equals": true,
+							"description": ""
 						}
-					]
+					],
+					"variable": []
 				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "user",
+						"value": "Britney",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": ""
 			},
 			"response": []
@@ -61,11 +84,8 @@
 		{
 			"name": "GetClientByPolicyNumber",
 			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
 				"url": {
-					"raw": "http://{{hostBackEnd}}/api/clients/ByPolicyNumber?policyNumber=64cceef9-3a01-49ae-a23b-3761b604800b",
+					"raw": "http://{{hostBackEnd}}/api/clients/bypolicynumber?policyNumber=56b415d6-53ee-4481-994f-4bffa47b5239",
 					"protocol": "http",
 					"host": [
 						"{{hostBackEnd}}"
@@ -73,16 +93,27 @@
 					"path": [
 						"api",
 						"clients",
-						"ByPolicyNumber"
+						"bypolicynumber"
 					],
 					"query": [
 						{
 							"key": "policyNumber",
-							"value": "64cceef9-3a01-49ae-a23b-3761b604800b",
-							"equals": true
+							"value": "56b415d6-53ee-4481-994f-4bffa47b5239",
+							"equals": true,
+							"description": ""
 						}
-					]
+					],
+					"variable": []
 				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "user",
+						"value": "Britney",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": ""
 			},
 			"response": []
@@ -90,14 +121,8 @@
 		{
 			"name": "GetPoliciesByUserName",
 			"request": {
-				"auth": {
-					"type": "basic"
-				},
-				"method": "GET",
-				"header": [],
-				"body": {},
 				"url": {
-					"raw": "http://{{hostBackEnd}}/api/policies/ByUserName?userName=Manning",
+					"raw": "http://{{hostBackEnd}}/api/policies/byusername?username=Manning",
 					"protocol": "http",
 					"host": [
 						"{{hostBackEnd}}"
@@ -105,16 +130,27 @@
 					"path": [
 						"api",
 						"policies",
-						"ByUserName"
+						"byusername"
 					],
 					"query": [
 						{
-							"key": "userName",
+							"key": "username",
 							"value": "Manning",
-							"equals": true
+							"equals": true,
+							"description": ""
 						}
-					]
+					],
+					"variable": []
 				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "user",
+						"value": "Britney",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": ""
 			},
 			"response": []

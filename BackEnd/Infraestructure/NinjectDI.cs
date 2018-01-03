@@ -1,11 +1,17 @@
-﻿namespace FrontEnd.Infraestructure
+﻿namespace BackEnd.Infraestructure
 {
-    using FrontEnd.Interfaces;
+    using BackEnd.Interfaces;
     using Ninject;
     using Ninject.Modules;
 
+    /// <summary>
+    /// dependency resolver para objetos (no webapi)
+    /// </summary>
     public class Bindings : NinjectModule
     {
+        /// <summary>
+        /// en el start sse hace el binding
+        /// </summary>
         public override void Load()
         {
             Binder(Kernel);

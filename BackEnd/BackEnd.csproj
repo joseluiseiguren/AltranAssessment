@@ -185,12 +185,13 @@
     <Compile Include="Dal\WebService\PoliciesRepository.cs" />
     <Compile Include="Dto\ClientDTO.cs" />
     <Compile Include="Dto\PolicyDTO.cs" />
-    <Compile Include="Filters\AutAttribute.cs" />
+    <Compile Include="Filters\CustomAuthAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infraestructure\ModelMapping.cs" />
     <Compile Include="Filters\CustomHandleErrorAttribute.cs" />
+    <Compile Include="Infraestructure\NinjectDI.cs" />
     <Compile Include="Interfaces\IClientsRepository.cs" />
     <Compile Include="Interfaces\IPoliciesRepository.cs" />
     <Compile Include="Models\Client.cs" />
