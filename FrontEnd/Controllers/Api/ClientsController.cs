@@ -9,6 +9,9 @@
     using FrontEnd.Dto;
     using System;
 
+    /// <summary>
+    /// controler de clientes
+    /// </summary>
     [Authorize]
     public class ClientsController : ApiController
     {
@@ -23,6 +26,15 @@
             this.clientsRepository = clientsRepository;
         }
 
+        /// <summary>
+        /// busqueda de clientes por filtros
+        /// </summary>
+        /// <param name="id">filtro por id del cliente</param>
+        /// <param name="name">filtro por nombre del cliente</param>
+        /// <param name="email">filtro por email del cliente</param>
+        /// <param name="role">filtro por rol del cliente</param>
+        /// <param name="paginado">paginado de la busqqueda</param>
+        /// <param name="ordenamiento">ordenamiento de la busqueda</param>
         [HttpGet]
         public IHttpActionResult Get(
                                     string id = null,

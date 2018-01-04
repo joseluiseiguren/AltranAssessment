@@ -204,13 +204,17 @@
             
         }).fail(function (data, textStatus, xhr) {
             that.HideLoader(true);
-            that.DisableFilters(true);
+            that.DisableFilters(false);
 
             // TODO: mostrar bien el error
-            that.SetMessage('Error: ' + textStatus);
-            console.log(data);
-            console.log(textStatus);
-            console.log(xhr);
+            that.SetMessage('Error: ' + data.status);
+
+            // se valida si el error fue por unauthorized
+            ValidateUnauthorized(data.status);
+
+            console.log("data status: " + data.status);
+            console.log("text: " + textStatus);
+            console.log("xhr: " + xhr);
         });
     }
 

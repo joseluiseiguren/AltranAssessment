@@ -5,9 +5,15 @@
     using BackEnd.Tests.Controllers.RepositoriesMock;
     using BackEnd.Dto;
 
+    /// <summary>
+    /// Testing para el controler de clientes
+    /// </summary>
     [TestClass]
     public class ClientsControllerTest
     {
+        /// <summary>
+        /// se busca un cliente por id, y lo encuentra
+        /// </summary>
         [TestMethod]
         public void GetClientById_OK()
         {
@@ -26,6 +32,9 @@
             Assert.AreEqual(clientId, contentResult.Content.Id);
         }
 
+        /// <summary>
+        /// se busca un cliente por id, y no lo encuentra
+        /// </summary>
         [TestMethod]
         public void GetClientById_NotFound()
         {
@@ -42,6 +51,9 @@
             Assert.IsNotNull(contentResult);
         }
 
+        /// <summary>
+        /// se busca un cliente por name, y lo encuentra
+        /// </summary>
         [TestMethod]
         public void GetClientByUserName_OK()
         {
@@ -60,6 +72,9 @@
             Assert.AreEqual(userName, contentResult.Content.Name);
         }
 
+        /// <summary>
+        /// se busca un cliente por name, y no lo encuentra
+        /// </summary>
         [TestMethod]
         public void GetClientByUserName_NotFound()
         {
@@ -76,6 +91,9 @@
             Assert.IsNotNull(contentResult);
         }
 
+        /// <summary>
+        /// se busca un cliente por policy number, y lo encuentra
+        /// </summary>
         [TestMethod]
         public void GetClientByPolicyNumber_OK()
         {
@@ -95,6 +113,9 @@
             Assert.AreEqual(clientId, contentResult.Content.Id);
         }
 
+        /// <summary>
+        /// se busca un cliente por policy number, y no lo encuentra
+        /// </summary>
         [TestMethod]
         public void GetClientByPolicyNumber_NotFound()
         {

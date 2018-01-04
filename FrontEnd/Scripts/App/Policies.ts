@@ -234,10 +234,13 @@
 
         }).fail(function (data, textStatus, xhr) {
             that.HideLoader(true);
-            that.DisableFilters(true);
+            that.DisableFilters(false);
+
+            // se valida si el error fue por unauthorized
+            ValidateUnauthorized(data.status);
 
             // TODO: mostrar bien el error
-            that.SetMessage('Error: ' + textStatus);
+            that.SetMessage('Error: ' + data.status);
             console.log(data);
             console.log(textStatus);
             console.log(xhr);

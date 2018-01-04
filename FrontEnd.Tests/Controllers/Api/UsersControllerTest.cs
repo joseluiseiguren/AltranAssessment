@@ -5,9 +5,15 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Web.Mvc;
 
+    /// <summary>
+    /// testing del controler de usuarios
+    /// </summary>
     [TestClass]
     public class UsersControllerTest
     {
+        /// <summary>
+        /// se hace un login ok
+        /// </summary>
         [TestMethod]
         public void LoginOk()
         {
@@ -23,6 +29,9 @@
             Assert.IsTrue(result.RouteValues.ContainsValue("Clients"));
         }
 
+        /// <summary>
+        /// se hace un login fallido
+        /// </summary>
         [TestMethod]
         public void LoginFail()
         {

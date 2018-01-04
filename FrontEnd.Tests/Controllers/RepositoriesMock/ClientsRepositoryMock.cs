@@ -5,10 +5,19 @@
     using Models;
     using System.Linq;
 
+    /// <summary>
+    /// se mockea el repositorio de clientes
+    /// </summary>
     public class ClientsRepositoryMock : IClientsRepository
     {
+        /// <summary>
+        /// lsita de clientes mockeados
+        /// </summary>
         public List<Client> Clients;
 
+        /// <summary>
+        /// se arma la lista de clientes en memoria
+        /// </summary>
         public ClientsRepositoryMock()
         {
             this.Clients = new List<Client>();

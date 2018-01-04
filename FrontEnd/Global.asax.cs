@@ -7,8 +7,14 @@
     using System.Web.Optimization;
     using System.Web.Routing;
 
+    /// <summary>
+    /// tunning genrico de aplicacion
+    /// </summary>
     public class MvcApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// configuracion de inicio de aplicacion
+        /// </summary>
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -18,7 +24,9 @@
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        // dependency resolver para controlers mvc (no webapi)
+        /// <summary>
+        /// dependency resolver para controlers mvc (no webapi)
+        /// </summary>
         public static IKernel GetDR()
         {
             IKernel ninjectDependencyResolver;

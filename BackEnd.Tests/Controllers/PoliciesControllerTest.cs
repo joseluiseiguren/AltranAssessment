@@ -7,9 +7,15 @@
     using BackEnd.Dto;
     using System.Linq;
 
+    /// <summary>
+    /// testing del controler de policies
+    /// </summary>
     [TestClass]
     public class PoliciesControllerTest
     {
+        /// <summary>
+        /// se busca una policy user name, y lo encuentra
+        /// </summary>
         [TestMethod]
         public void GetPoliciesByUserName_OK()
         {
@@ -28,6 +34,9 @@
             Assert.AreEqual(2, contentResult.Content.ToList().Count);
         }
 
+        /// <summary>
+        /// se busca una policy user name, y no lo encuentra
+        /// </summary>
         [TestMethod]
         public void GetPoliciesByUserName_NotFound()
         {

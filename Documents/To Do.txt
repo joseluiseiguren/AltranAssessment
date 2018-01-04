@@ -4,11 +4,13 @@
 - que cambie el color al pasar por arriba de un row
 	- pasar de pagina de clientes a policies
 - usar enum o nameof para os nombres de las columnas en el ordenamiento (typescript), y sacar el harcodeo
-- poner otra fuente en pagina de policies, para el clientid en el titulo
 	- ver si se puede usar ninject para inyectar los controlers (no webapi)
 - validar filtro de amount insured para que no puedan ingresar letras
 	- poner nombre en vez del guid en la pantalla de policies
 - tooltip en filtros
 - limpiar codigo CSS/JS
 - mostrar errores en front end
-- front end: favicon con logo de altran 
+	- front end: favicon con logo de altran 
+	- Front end: cuando desde la pantalla de policies se hace un logout, y desde la pantalla de clients se hacec una busqueda da error
+- Sacar prevent default que esta deprecado
+- Sacar todos los warning

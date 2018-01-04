@@ -21,9 +21,6 @@
         /// </summary>
         /// <param name="pagina">pagina solicitada.</param>
         /// <param name="filas">filas por pagina.</param>
-        /// <param name="totalFilas">mostrar total filas.</param>
-        /// <param name="columnaOrdenamiento">columna de ordenamiento.</param>
-        /// <param name="sentidoOrdenamiento">true = ASC, false = DESC.</param>
         public PaginadoDTO(int pagina, int filas)
         {
             this.Pagina = pagina;

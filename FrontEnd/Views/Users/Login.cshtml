@@ -7,37 +7,26 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-</head>
-<body>
-    <div class="row">
-        <div class="col-md-8">
-            <section id="loginForm">                
-                @using (Html.BeginForm("Login", "Users", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Log in" class="btn btn-default" />
-                        </div>
-                    </div>
-                }
-            </section>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Login</title>
+        <link href="~/Content/login.css" rel="stylesheet" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://www.altran.com/as-content/themes/altran/images/favicon/favicon-16x16.png">
+    </head>
+    <body>
+        <div class="login-block">
+            <h1>Assessment</h1>
+            <h3>Jose Luis Eiguren</h3>
+
+            @using (Html.BeginForm("Login", "Users", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "ValSummary" })
+                @Html.ValidationSummary(true, "", new { @class = "ValSummary" })
+                @Html.TextBoxFor(m => m.Email, new { placeholder = Html.DisplayNameFor(n => n.Email), autocomplete = "off", autofocus = "autofocus" })
+
+                <input type="submit" value="Log in" />
+            }
         </div>
-    </div>
-</body>
+    </body>
 </html>

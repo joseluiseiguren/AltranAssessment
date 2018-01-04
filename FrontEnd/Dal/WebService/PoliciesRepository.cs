@@ -8,6 +8,9 @@
     using System.Linq;
     using System.Net;
 
+    /// <summary>
+    /// repositorio de policies atravez de web service externo
+    /// </summary>
     public class PoliciesRepository : IPoliciesRepository
     {
         /// <summary>

@@ -6,9 +6,15 @@
     using System.Web.Http.Results;
     using FrontEnd.Dto;
 
+    /// <summary>
+    /// testing del controler de policies
+    /// </summary>
     [TestClass]
     public class PoliciesControllerTest
     {
+        /// <summary>
+        /// se busca sin filtro
+        /// </summary>
         [TestMethod]
         public void GetNoFilter()
         {
@@ -24,6 +30,9 @@
             Assert.AreEqual(policyRepository.Policies.Count, ((List<PolicyDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por id de la policy y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByPolicyIdNotFound()
         {
@@ -39,6 +48,9 @@
             Assert.AreEqual(0, ((List<PolicyDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por id de la policy y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByPolicyIdFound()
         {
@@ -54,6 +66,9 @@
             Assert.AreEqual(policyRepository.Policies[0].Id, ((List<PolicyDTO>)(contentResult.Content).Lista)[0].Id);
         }
 
+        /// <summary>
+        /// se busca por id del cliente y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByClientIdNotFound()
         {
@@ -70,6 +85,9 @@
             Assert.AreEqual(0, ((List<PolicyDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por id del cliente y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByClientIdFound()
         {
@@ -85,6 +103,9 @@
             Assert.AreEqual(policyRepository.Policies[0].ClientId, ((List<PolicyDTO>)(contentResult.Content).Lista)[0].ClientId);
         }
 
+        /// <summary>
+        /// se busca por monto de la policy y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByAmountInsuredNotFound()
         {
@@ -100,6 +121,9 @@
             Assert.AreEqual(0, ((List<PolicyDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por monto de la policy y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByAmountInsuredFound()
         {
@@ -115,6 +139,9 @@
             Assert.AreEqual(policyRepository.Policies[0].AmountInsured, ((List<PolicyDTO>)(contentResult.Content).Lista)[0].AmountInsured);
         }
 
+        /// <summary>
+        /// se busca por email de la policy y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByEmailNotFound()
         {
@@ -130,6 +157,9 @@
             Assert.AreEqual(0, ((List<PolicyDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por email de la policy y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByEmailFound()
         {
@@ -145,6 +175,9 @@
             Assert.AreEqual(1, ((List<PolicyDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por fecha de la policy y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByInceptionDateNotFound()
         {
@@ -160,6 +193,9 @@
             Assert.AreEqual(0, ((List<PolicyDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por fecha de la policy y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByInceptionDateFound()
         {
@@ -175,6 +211,9 @@
             Assert.AreEqual(policyRepository.Policies[0].InceptionDate, ((List<PolicyDTO>)(contentResult.Content).Lista)[0].InceptionDate);
         }
 
+        /// <summary>
+        /// se busca por installment payment de la policy y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByInstallmentPaymentFound()
         {

@@ -6,9 +6,15 @@
     using System.Web.Http.Results;
     using FrontEnd.Dto;
 
+    /// <summary>
+    /// testing del controler de clientes
+    /// </summary>
     [TestClass]
     public class ClientsControllerTest
     {
+        /// <summary>
+        /// obtiene todos los clientes sin filtros
+        /// </summary>
         [TestMethod]
         public void GetNoFilter()
         {
@@ -24,6 +30,9 @@
             Assert.AreEqual(clientRepository.Clients.Count, ((List<ClientDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por id de cliente y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByIdNotFound()
         {
@@ -39,6 +48,9 @@
             Assert.AreEqual(0, ((List<ClientDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por id de cliente y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByIdFound()
         {
@@ -54,6 +66,9 @@
             Assert.AreEqual(clientRepository.Clients[0].Id, ((List<ClientDTO>)(contentResult.Content).Lista)[0].Id);
         }
 
+        /// <summary>
+        /// se busca por name de cliente y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByNameNotFound()
         {
@@ -69,6 +84,9 @@
             Assert.AreEqual(0, ((List<ClientDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por name de cliente y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByNameFound()
         {
@@ -84,6 +102,9 @@
             Assert.AreEqual(2, ((List<ClientDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por email de cliente y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByEmailNotFound()
         {
@@ -99,6 +120,9 @@
             Assert.AreEqual(0, ((List<ClientDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por email de cliente y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByEmailFound()
         {
@@ -114,6 +138,9 @@
             Assert.AreEqual(1, ((List<ClientDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por rol de cliente y no encuentra
+        /// </summary>
         [TestMethod]
         public void GetByRoleNotFound()
         {
@@ -129,6 +156,9 @@
             Assert.AreEqual(0, ((List<ClientDTO>)(contentResult.Content).Lista).Count);
         }
 
+        /// <summary>
+        /// se busca por rol de cliente y encuentra
+        /// </summary>
         [TestMethod]
         public void GetByRoleFound()
         {

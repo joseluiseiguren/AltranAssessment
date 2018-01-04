@@ -9,6 +9,9 @@
     using System.Web.Http;
     using Infraestructure;
 
+    /// <summary>
+    /// controler de policies
+    /// </summary>
     [Authorize]
     public class PoliciesController : ApiController
     {
@@ -23,6 +26,17 @@
             this.policiesRepository = policiesRepository;
         }
 
+        /// <summary>
+        /// busqueda de policies por filtros
+        /// </summary>
+        /// <param name="clientId">filtro por id del cliente</param>
+        /// <param name="policyId">filtro por id de la policy</param>
+        /// <param name="amountInsured">filtro por monto de la policy</param>
+        /// <param name="email">filtro por email de la policy</param>
+        /// <param name="installmentPayment">filtro por installmentPayment de la policy</param>
+        /// <param name="inceptionDate">filtro por inceptionDate de la policy</param>
+        /// <param name="paginado">paginado de la busqqueda</param>
+        /// <param name="ordenamiento">ordenamiento de la busqueda</param>
         [HttpGet]
         public IHttpActionResult Get(
                                     string clientId = null,

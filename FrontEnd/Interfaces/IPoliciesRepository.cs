@@ -3,6 +3,9 @@
     using FrontEnd.Models;
     using System.Linq;
 
+    /// <summary>
+    /// repositorio de policies
+    /// </summary>
     public interface IPoliciesRepository
     {
         /// <summary>

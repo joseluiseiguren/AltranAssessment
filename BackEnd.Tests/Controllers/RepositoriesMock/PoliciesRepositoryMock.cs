@@ -5,10 +5,16 @@
     using BackEnd.Models;
     using System.Linq;
 
+    /// <summary>
+    /// se mockea ek repositorio de plicies
+    /// </summary>
     public class PoliciesRepositoryMock : IPoliciesRepository
     {
         private List<Policy> Policies;
 
+        /// <summary>
+        /// se construye la lista de policies en memoria
+        /// </summary>
         public PoliciesRepositoryMock()
         {
             this.Policies = new List<Policy>();
@@ -44,11 +50,17 @@
             });
         }
 
+        /// <summary>
+        /// se busca una policy por client id
+        /// </summary>
         public List<Policy> GetByClientId(string clientId)
         {
             return this.Policies.Where(p => p.ClientId.Equals(clientId)).ToList();
         }
 
+        /// <summary>
+        /// se busca una policy por id
+        /// </summary>
         public Policy GetById(string id)
         {
             return this.Policies.Where(p => p.Id.Equals(id)).FirstOrDefault();

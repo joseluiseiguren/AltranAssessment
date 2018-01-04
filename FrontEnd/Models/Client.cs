@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace FrontEnd.Models
+﻿namespace FrontEnd.Models
 {
+    /// <summary>
+    /// modelo de clientes
+    /// </summary>
     public class Client
     {
         /// <summary>

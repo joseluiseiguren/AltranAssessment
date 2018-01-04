@@ -6,10 +6,19 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// se mockea el respositorio de policies
+    /// </summary>
     public class PoliciesRepositoryMock : IPoliciesRepository
     {
+        /// <summary>
+        /// lista mockeada de policies en memoria
+        /// </summary>
         public List<Policy> Policies;
 
+        /// <summary>
+        /// se arma la lista de policies en memoria
+        /// </summary>
         public PoliciesRepositoryMock()
         {
             this.Policies = new List<Policy>();

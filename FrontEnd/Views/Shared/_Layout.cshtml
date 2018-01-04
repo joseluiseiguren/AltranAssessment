@@ -4,27 +4,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.altran.com/as-content/themes/altran/images/favicon/favicon-16x16.png">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
             <div class="navbar-header">
-                @Html.ActionLink("JLE Altran Assessment", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
-                @if (Request.IsAuthenticated)
-                {
-                    <label class="logedUser">Welcome @Html.Encode(User.Identity.Name)</label>
-                    @Html.ActionLink("Sign Out", "Logout", "Users", new { area = "" }, new { @class = "navbar-brand" })
-                }
+                <a class="navbar-brand" href="~/Clients/Search">Jose Luis Eiguren - Assessment</a>
             </div>
-            <div class="navbar-collapse collapse">
-                
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> 
+                        @if (Request.IsAuthenticated)
+                        {
+                            @Html.Encode(User.Identity.Name)
+                        }
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="~/Users/LogOut"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+        
+
     <div class="Title">@ViewBag.Title</div> 
     <div class="body-content">
         <div id="Loader" style="position: fixed; top: 50%; left: 50%;">

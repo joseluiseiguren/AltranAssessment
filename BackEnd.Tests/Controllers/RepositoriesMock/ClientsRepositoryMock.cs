@@ -5,10 +5,16 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// se mockea el repositorio de clientes
+    /// </summary>
     public class ClientsRepositoryMock : IClientsRepository
     {
         private List<Client> Clients;
 
+        /// <summary>
+        /// se construye la lista de clientes en memoria
+        /// </summary>
         public ClientsRepositoryMock()
         {
             this.Clients = new List<Client>();
@@ -38,11 +44,17 @@
             });
         }
 
+        /// <summary>
+        /// se busca un cliente por id
+        /// </summary>
         public Client GetById(string id)
         {
             return this.Clients.Where(p => p.Id.Equals(id)).FirstOrDefault();
         }
 
+        /// <summary>
+        /// se busca un cliente por name
+        /// </summary>
         public Client GetByName(string name)
         {
             return this.Clients.Where(p => p.Name.Equals(name)).FirstOrDefault();

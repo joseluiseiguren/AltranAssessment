@@ -4,8 +4,14 @@
     using Ninject;
     using Ninject.Modules;
 
+    /// <summary>
+    /// configuracion de ninject (no webapi)
+    /// </summary>
     public class Bindings : NinjectModule
     {
+        /// <summary>
+        /// binding de las interfaces
+        /// </summary>
         public override void Load()
         {
             Binder(Kernel);

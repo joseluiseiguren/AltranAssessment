@@ -2,8 +2,10 @@
 {
     using FrontEnd.Models;
     using System.Linq;
-    using System.Collections.Generic;
 
+    /// <summary>
+    /// interfaz del repositorio de clientes
+    /// </summary>
     public interface IClientsRepository
     {
         /// <summary>
