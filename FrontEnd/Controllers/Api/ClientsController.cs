@@ -9,6 +9,7 @@
     using FrontEnd.Dto;
     using System;
 
+    [Authorize]
     public class ClientsController : ApiController
     {
         private IClientsRepository clientsRepository;

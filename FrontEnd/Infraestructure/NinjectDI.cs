@@ -19,6 +19,7 @@
         {
             kernel.Bind<IClientsRepository>().To<Dal.WebService.ClientsRepository>().InSingletonScope();
             kernel.Bind<IPoliciesRepository>().To<Dal.WebService.PoliciesRepository>().InSingletonScope();
+            kernel.Bind<IAuth>().To<Security.FormsAuth>().InSingletonScope();
         }
     }
 }

@@ -38,6 +38,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\FrontEnd.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\FrontEnd.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -185,6 +187,7 @@
     <Compile Include="Controllers\Api\PoliciesController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\PoliciesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Dal\WebService\ClientsRepository.cs" />
     <Compile Include="Dal\WebService\PoliciesRepository.cs" />
     <Compile Include="Dto\ClientDTO.cs" />
@@ -194,13 +197,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Security\FormsAuth.cs" />
     <Compile Include="Infraestructure\ModelMapping.cs" />
     <Compile Include="Infraestructure\NinjectDI.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IClientsRepository.cs" />
     <Compile Include="Interfaces\IPoliciesRepository.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Dto\PaginadoDTO.cs" />
     <Compile Include="Models\Policy.cs" />
+    <Compile Include="Models\UserLoginVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +250,7 @@
     <Content Include="Views\Clients\Search.cshtml" />
     <Content Include="Scripts\tsconfig.json" />
     <Content Include="Views\Policies\GetByClient.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

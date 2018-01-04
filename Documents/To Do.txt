@@ -10,3 +10,5 @@
 	- poner nombre en vez del guid en la pantalla de policies
 - tooltip en filtros
 - limpiar codigo CSS/JS
+- mostrar errores en front end
+- front end: favicon con logo de altran 

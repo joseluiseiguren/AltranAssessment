@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace FrontEnd.Controllers
 {
+    [Authorize]
     public class ClientsController : Controller
     {
         public ActionResult Search()

@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
+    [Authorize]
     public class PoliciesController : Controller
     {
         private IClientsRepository clientsRepository;

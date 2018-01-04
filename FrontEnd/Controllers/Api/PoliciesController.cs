@@ -9,6 +9,7 @@
     using System.Web.Http;
     using Infraestructure;
 
+    [Authorize]
     public class PoliciesController : ApiController
     {
         private IPoliciesRepository policiesRepository;
