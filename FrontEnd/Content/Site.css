@@ -3,20 +3,15 @@
     padding-bottom: 20px;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
@@ -33,8 +28,19 @@ textarea {
     width: 20%;
 }
 
+#image_input img {
+    float: left;
+    clear: none;
+}
+
+.imgInformation {
+    width: 17px;
+    height: 17px;
+    margin-left: 3px;
+}
+
 .filtro {
-    width: 100%;
+    width: 90%;
     display: inline-block;
     margin: 5px 0;
     border: 1px solid #ccc;
@@ -155,243 +161,246 @@ hr {
     border-radius: 4px;
 }
 
-    .Table.TableInner {
-        border: none;
-        padding: 0px;
-    }
+.Table.TableInner {
+    border: none;
+    padding: 0px;
+}
 
-    .Table .thead {
-        height: 42px;
-    }
+.Table .thead {
+    height: 42px;
+}
 
-        .Table .thead .tr {
-            background: #eee;
-            -webkit-border-radius: 2px;
-            -moz-border-radius: 2px;
-            border-radius: 2px;
-        }
+.Table .thead .tr {
+    background: #eee;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
 
-            .Table .thead .tr .th {
-                font-weight: bold;
-                line-height: 32px;
-                min-height: 35px;
-                text-transform: capitalize;
-                padding: 5px;
-            }
+.Table .thead .tr .th {
+    font-weight: bold;
+    line-height: 32px;
+    min-height: 35px;
+    text-transform: capitalize;
+    padding: 5px;
+}
 
-                .Table .thead .tr .th > .content-tooltip {
-                    width: 95%;
-                    margin: 0 5% 0 0;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    height: auto;
-                    line-height: 34px;
-                }
+.Table .thead .tr .th > .content-tooltip {
+    width: 95%;
+    margin: 0 5% 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: auto;
+    line-height: 34px;
+}
 
-                .Table .thead .tr .th .tooltip .tooltip-inner {
-                    padding: 5px 10px !important;
-                    background-color: #000 !important;
-                    height: auto;
-                }
+.Table .thead .tr .th .tooltip .tooltip-inner {
+    padding: 5px 10px !important;
+    background-color: #000 !important;
+    height: auto;
+}
 
-                .Table .thead .tr .th:first-child {
-                    padding-left: 10px;
-                }
+.Table .thead .tr .th:first-child {
+    padding-left: 10px;
+}
 
-                .Table .thead .tr .th.right {
-                    text-align: right;
-                }
+.Table .thead .tr .th.right {
+    text-align: right;
+}
 
-                .Table .thead .tr .th i {
-                    margin-left: 5px;
-                }
+.Table .thead .tr .th i {
+    margin-left: 5px;
+}
 
-                .Table .thead .tr .th a {
-                    color: #656565;
-                    text-decoration: none;
-                    cursor: pointer;
-                }
+.Table .thead .tr .th a {
+    color: #656565;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-    .Table .tbody .tr {
-        border-bottom: solid 1px #ddd;
-        position: relative;
-    }
+.Table .tbody .tr {
+    border-bottom: solid 1px #ddd;
+    position: relative;
+}
 
-        .Table .tbody .tr:first-child {
-            border-top: solid 1px #ddd;
-        }
+.Table .tbody .tr:first-child {
+    border-top: solid 1px #ddd;
+}
 
-        .Table .tbody .tr:hover {
-            margin-top: -1px;
-            outline: none;
-        }
+.Table .tbody .tr:hover {
+    margin-top: -1px;
+    outline: none;
+}
 
-        .Table .tbody .tr .td {
-            padding: 3px;
-            text-transform: capitalize;
-            cursor: default;
-            border-bottom: solid 1px #ddd;
-            height: 35px;
-        }
+.Table .tbody .tr .td {
+    padding: 3px;
+    text-transform: capitalize;
+    cursor: default;
+    border-bottom: solid 1px #ddd;
+    height: 35px;
+}
 
-            .Table .tbody .tr .td > .content-tooltip {
-                width: 95%;
-                margin: 0 5% 0 0;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                height: 100%;
-                line-height: 34px;
-            }
+.Table .tbody .tr .td > .content-tooltip {
+    width: 95%;
+    margin: 0 5% 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 100%;
+    line-height: 34px;
+}
 
-            .Table .tbody .tr .td.right {
-                text-align: right;
-                padding-right: 10px;
-            }
+.Table .tbody .tr .td.right {
+    text-align: right;
+    padding-right: 10px;
+}
 
-            .Table .tbody .tr .td .tooltip {
-                width: auto !important;
-            }
+.Table .tbody .tr .td .tooltip {
+    width: auto !important;
+}
 
-                .Table .tbody .tr .td .tooltip .tooltip-inner {
-                    width: auto !important;
-                    padding: 5px 10px !important;
-                    background-color: #000 !important;
-                }
+.Table .tbody .tr .td .tooltip .tooltip-inner {
+    width: auto !important;
+    padding: 5px 10px !important;
+    background-color: #000 !important;
+}
 
-            .Table .tbody .tr .td.tdEstado {
-                height: auto;
-            }
+.Table .tbody .tr .td.tdEstado {
+    height: auto;
+}
 
-                .Table .tbody .tr .td.tdEstado div {
-                    display: inline-block;
-                    width: 100%;
-                    padding: 2px 0px;
-                    margin: 1px auto 0px auto;
-                    text-align: center;
-                    font-size: 9px;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    border-radius: 5px;
-                    line-height: normal;
-                    letter-spacing: 1px;
-                    white-space: normal;
-                    vertical-align: middle;
-                    -webkit-border-radius: 5px;
-                    -moz-border-radius: 5px;
-                    border-radius: 5px;
-                }
+.Table .tbody .tr .td.tdEstado div {
+    display: inline-block;
+    width: 100%;
+    padding: 2px 0px;
+    margin: 1px auto 0px auto;
+    text-align: center;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 5px;
+    line-height: normal;
+    letter-spacing: 1px;
+    white-space: normal;
+    vertical-align: middle;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
 
-                    .Table .tbody .tr .td.tdEstado div.estado_Activo, .Table .tbody .tr .td.tdEstado div.estado_Normal {
-                        border: solid #36af46 2px;
-                        color: #36af46;
-                        background: #fff;
-                    }
+.Table .tbody .tr .td.tdEstado div.estado_Activo, .Table .tbody .tr .td.tdEstado div.estado_Normal {
+    border: solid #36af46 2px;
+    color: #36af46;
+    background: #fff;
+}
 
-                    .Table .tbody .tr .td.tdEstado div.estado_Inactivo, .Table .tbody .tr .td.tdEstado div.estado_Baja {
-                        border: solid #ee1c25 2px;
-                        color: #ee1c25;
-                        background: #fff;
-                    }
+.Table .tbody .tr .td.tdEstado div.estado_Inactivo, .Table .tbody .tr .td.tdEstado div.estado_Baja {
+    border: solid #ee1c25 2px;
+    color: #ee1c25;
+    background: #fff;
+}
 
-            .Table .tbody .tr .td.btn-group {
-                display: table-cell;
-            }
+.Table .tbody .tr .td.btn-group {
+    display: table-cell;
+}
 
-                .Table .tbody .tr .td.btn-group .dropdown-toggle,
-                .Table .tbody .tr .td.btn-group .dropdown-toggle:hover,
-                .Table .tbody .tr .td.btn-group .dropdown-toggle:focus,
-                .Table .tbody .tr .td.btn-group .dropdown-toggle:active {
-                    width: auto;
-                    padding: 0px;
-                    text-align: center;
-                    background: none;
-                    color: #777;
-                    border: none;
-                    vertical-align: top;
-                    float: right;
-                    margin-right: 5px;
-                    -webkit-box-shadow: none !important;
-                    -moz-box-shadow: none !important;
-                    box-shadow: none !important;
-                }
+.Table .tbody .tr .td.btn-group .dropdown-toggle,
+.Table .tbody .tr .td.btn-group .dropdown-toggle:hover,
+.Table .tbody .tr .td.btn-group .dropdown-toggle:focus,
+.Table .tbody .tr .td.btn-group .dropdown-toggle:active {
+    width: auto;
+    padding: 0px;
+    text-align: center;
+    background: none;
+    color: #777;
+    border: none;
+    vertical-align: top;
+    float: right;
+    margin-right: 5px;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
 
-                    .Table .tbody .tr .td.btn-group .dropdown-toggle i,
-                    .Table .tbody .tr .td.btn-group .dropdown-toggle:hover i,
-                    .Table .tbody .tr .td.btn-group .dropdown-toggle:focus i,
-                    .Table .tbody .tr .td.btn-group .dropdown-toggle:active i {
-                        font-size: 26px;
-                        vertical-align: middle;
-                    }
+.Table .tbody .tr .td.btn-group .dropdown-toggle i,
+.Table .tbody .tr .td.btn-group .dropdown-toggle:hover i,
+.Table .tbody .tr .td.btn-group .dropdown-toggle:focus i,
+.Table .tbody .tr .td.btn-group .dropdown-toggle:active i {
+    font-size: 26px;
+    vertical-align: middle;
+}
 
-                    .Table .tbody .tr .td.btn-group .dropdown-toggle:hover {
-                        color: #000;
-                    }
+.Table .tbody .tr .td.btn-group .dropdown-toggle:hover {
+    color: #000;
+}
 
-                .Table .tbody .tr .td.btn-group.open .dropdown-menu {
-                    right: 0;
-                    left: auto;
-                    z-index: 10000;
-                }
+.Table .tbody .tr .td.btn-group.open .dropdown-menu {
+    right: 0;
+    left: auto;
+    z-index: 10000;
+}
 
-                    .Table .tbody .tr .td.btn-group.open .dropdown-menu li a {
-                        color: #333;
-                        cursor: pointer;
-                    }
+.Table .tbody .tr .td.btn-group.open .dropdown-menu li a {
+    color: #333;
+    cursor: pointer;
+}
 
-                        .Table .tbody .tr .td.btn-group.open .dropdown-menu li a i {
-                            margin-right: 10px;
-                        }
+.Table .tbody .tr .td.btn-group.open .dropdown-menu li a i {
+    margin-right: 10px;
+}
 
-                        .Table .tbody .tr .td.btn-group.open .dropdown-menu li a.delete,
-                        .Table .tbody .tr .td.btn-group.open .dropdown-menu li a.delete i {
-                            color: red;
-                            font-weight: 700;
-                        }
+.Table .tbody .tr .td.btn-group.open .dropdown-menu li a.delete,
+.Table .tbody .tr .td.btn-group.open .dropdown-menu li a.delete i {
+    color: red;
+    font-weight: 700;
+}
 
-        .Table .tbody .tr.insertedTr td {
-            padding: 15px 0px 0px 0px;
-            background: #f9f9f9;
-            border: solid 1px #ddd;
-            border-top: none;
-        }
+.Table .tbody .tr.insertedTr td {
+    padding: 15px 0px 0px 0px;
+    background: #f9f9f9;
+    border: solid 1px #ddd;
+    border-top: none;
+}
 
-            .Table .tbody .tr.insertedTr td form {
-                margin: 15px 15px 15px 15px;
-            }
+.Table .tbody .tr.insertedTr td form {
+    margin: 15px 15px 15px 15px;
+}
 
-            .Table .tbody .tr.insertedTr td .Table {
-                margin: 0px;
-                background: #fff;
-                padding: 10px;
-                border: none;
-                border-collapse: collapse;
-            }
+.Table .tbody .tr.insertedTr td .Table {
+    margin: 0px;
+    background: #fff;
+    padding: 10px;
+    border: none;
+    border-collapse: collapse;
+}
 
-                .Table .tbody .tr.insertedTr td .Table .td {
-                    border: none;
-                }
+.Table .tbody .tr.insertedTr td .Table .td {
+    border: none;
+}
 
-        .Table .tbody .tr.insertedTr:hover {
-            background: none;
-        }
+.Table .tbody .tr.insertedTr:hover {
+    background: none;
+}
 
-        .Table .tbody .tr.trAlert td {
-            padding: 0px;
-            border: none;
-        }
+.Table .tbody .tr.trAlert td {
+    padding: 0px;
+    border: none;
+}
 
-            .Table .tbody .tr.trAlert td .alerta {
-                display: block;
-                margin: -2px 0px 0px 0px;
-                width: 100%;
-                -webkit-border-radius: 0px;
-                -moz-border-radius: 0px;
-                border-radius: 0px;
-            }
+.Table .tbody .tr.trAlert td .alerta {
+    display: block;
+    margin: -2px 0px 0px 0px;
+    width: 100%;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
 
-    .Table .tbody .trKO td {
-        text-align: center;
-        padding: 20px;
-    }
+.Table .tbody .trKO td {
+    text-align: center;
+    padding: 20px;
+}
+
+
+

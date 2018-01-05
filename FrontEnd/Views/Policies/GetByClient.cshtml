@@ -7,19 +7,32 @@
 <div id="page">
     <div class="filtros">
         <form id="frmFiltros">
-            <input class="filtro" type="text" id="filterId" placeholder=" Policy Id Filter" tabindex=1 />
-            <input class="filtro" type="text" id="filterAmount" placeholder="Amount Filter" tabindex=2 />
-            <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=4 />
-            <label class="filroLabelUp">Inception Date Filter</label>
-            <input class="filtro filtroDate" type="date" id="filterInceptionDate" tabindex=3 />
-            <br />
-            <select class="filtro" id="filterInstallmentPayment" tabindex=5>
-                <option value="" disabled selected>Installment Payment Filter</option>
-                <option value="all">&lt;All&gt;</option>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <br />
+            <div name="image_input">
+                <input class="filtro" type="text" id="filterId" placeholder=" Policy Id Filter" tabindex=1 />
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search a Policy by Id" />
+            </div>
+            <div name="image_input">
+                <input class="filtro" type="text" id="filterAmount" placeholder="Amount Filter" tabindex=2 />
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose amount is equal to this filter" />
+            </div>
+            <div name="image_input">
+                <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=4 />
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose emails start with this filter (no case sensitive)" />
+            </div>
+            <div name="image_input">
+                <label class="filroLabelUp">Inception Date Filter</label>
+                <input class="filtro filtroDate" type="date" id="filterInceptionDate" tabindex=3 />
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose inception date is equal to this filter" />
+            </div>
+            <div name="image_input">
+                <select class="filtro" id="filterInstallmentPayment" tabindex=5>
+                    <option value="" disabled selected>Installment Payment Filter</option>
+                    <option value="all">&lt;All&gt;</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies who belong to this installment payment filter" />
+            </div>
             <input class="filtroApply" type="submit" value="Apply Filter" id="btnSearch" tabindex=5 />
         </form>
         <hr />
@@ -67,5 +80,6 @@
 <script src="~/Scripts/Globales.js"></script>
 <script>
     var policiesSearch = new PoliciesSearch($("#page"), $('#Loader'), '@Model.Id');
+    policiesSearch.Process();
 </script>
 

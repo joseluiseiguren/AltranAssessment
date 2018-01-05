@@ -2,79 +2,19 @@ var ClientesSearch = (function () {
     function ClientesSearch(page, loader) {
         this.ordenamiento = new OrdenamientoDto();
         this.paginacion = new PaginacionDto();
+        this.colsOrdenamiento = {
+            id: "id",
+            name: "name",
+            email: "email",
+            role: "role"
+        };
         var that = this;
         this.page = page;
         this.loader = loader;
         this.ordenamiento.asc = true;
-        this.ordenamiento.columnaOrdenamiento = "id";
+        this.ordenamiento.columnaOrdenamiento = that.colsOrdenamiento.id;
         this.paginacion.pagina = 1;
         this.paginacion.filasPorPagina = that.GetFilasPorPagina();
-        // inicio de la pagina
-        page.ready(function () {
-            that.SetDefaultOrder();
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
-        // submit de filtros
-        page.find("#frmFiltros").submit(function (event) {
-            event.preventDefault();
-            that.SetDefaultOrder();
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
-        // cambio en el combo de filas por pagina
-        page.find("#filasPorPagina").change(function () {
-            that.paginacion.pagina = 1;
-            that.SetPaginaActual(that.paginacion.pagina);
-            that.paginacion.filasPorPagina = that.GetFilasPorPagina();
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
-        // siguiente pagina
-        page.find("#nextPage").click(function () {
-            that.paginacion.pagina += 1;
-            that.SetPaginaActual(that.paginacion.pagina);
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
-        // pagina anterior
-        page.find("#prevPage").click(function () {
-            that.paginacion.pagina -= 1;
-            that.SetPaginaActual(that.paginacion.pagina);
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
-        // ordenamiento por id
-        page.find("#colId").click(function () {
-            that.paginacion.pagina = 1;
-            that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == "id") ? !that.ordenamiento.asc : true;
-            that.ordenamiento.columnaOrdenamiento = "id";
-            that.RemoveOrderIcons();
-            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
-        // ordenamiento por name
-        page.find("#colName").click(function () {
-            that.paginacion.pagina = 1;
-            that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == "name") ? !that.ordenamiento.asc : true;
-            that.ordenamiento.columnaOrdenamiento = "name";
-            that.RemoveOrderIcons();
-            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
-        // ordenamiento por email
-        page.find("#colEmail").click(function () {
-            that.paginacion.pagina = 1;
-            that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == "email") ? !that.ordenamiento.asc : true;
-            that.ordenamiento.columnaOrdenamiento = "email";
-            that.RemoveOrderIcons();
-            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
-        // ordenamiento por role
-        page.find("#colRole").click(function () {
-            that.paginacion.pagina = 1;
-            that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == "role") ? !that.ordenamiento.asc : true;
-            that.ordenamiento.columnaOrdenamiento = "role";
-            that.RemoveOrderIcons();
-            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
-            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
-        });
     }
     ClientesSearch.prototype.QueryData = function (id, name, email, role, paginado, orden) {
         var that = this;
@@ -195,8 +135,12 @@ var ClientesSearch = (function () {
     };
     ClientesSearch.prototype.RenderRow = function (data) {
         var trHTML = '';
-        var urlPolicy = 'clients/' + data.Id + '/policies';
-        trHTML = '<tr class="tr"><td class="td"><a target="_blank" href="' + urlPolicy + '">' + data.Id + '</a></td><td class="td">' + data.Name + '</td><td class="td">' + data.Email + '</td><td class="td">' + data.Role + '</td></tr>';
+        var urlPolicy = '/clients/' + data.Id + '/policies';
+        trHTML = '<tr class="tr"><td class="td"><a target="_blank" href="' + urlPolicy + '">' +
+            data.Id + '</a></td><td class="td">' +
+            data.Name + '</td><td class="td">' +
+            data.Email + '</td><td class="td">' +
+            data.Role + '</td></tr>';
         return trHTML;
     };
     ClientesSearch.prototype.RemoveOrderIcons = function () {
@@ -206,8 +150,78 @@ var ClientesSearch = (function () {
         var that = this;
         that.RemoveOrderIcons();
         TableHeaderOrderIconAsc(this.page.find('#tClientes #colId i'));
-        this.ordenamiento.columnaOrdenamiento = "id";
+        this.ordenamiento.columnaOrdenamiento = that.colsOrdenamiento.id;
         this.paginacion.pagina = 1;
+    };
+    ClientesSearch.prototype.Process = function () {
+        var that = this;
+        // inicio de la pagina
+        that.page.ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            that.SetDefaultOrder();
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
+        // submit de filtros
+        that.page.find("#frmFiltros").submit(function (event) {
+            event.preventDefault();
+            that.SetDefaultOrder();
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
+        // cambio en el combo de filas por pagina
+        that.page.find("#filasPorPagina").change(function () {
+            that.paginacion.pagina = 1;
+            that.SetPaginaActual(that.paginacion.pagina);
+            that.paginacion.filasPorPagina = that.GetFilasPorPagina();
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
+        // siguiente pagina
+        that.page.find("#nextPage").click(function () {
+            that.paginacion.pagina += 1;
+            that.SetPaginaActual(that.paginacion.pagina);
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
+        // pagina anterior
+        that.page.find("#prevPage").click(function () {
+            that.paginacion.pagina -= 1;
+            that.SetPaginaActual(that.paginacion.pagina);
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
+        // ordenamiento por id
+        that.page.find("#colId").click(function () {
+            that.paginacion.pagina = 1;
+            that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == that.colsOrdenamiento.id) ? !that.ordenamiento.asc : true;
+            that.ordenamiento.columnaOrdenamiento = that.colsOrdenamiento.id;
+            that.RemoveOrderIcons();
+            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
+        // ordenamiento por name
+        that.page.find("#colName").click(function () {
+            that.paginacion.pagina = 1;
+            that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == that.colsOrdenamiento.name) ? !that.ordenamiento.asc : true;
+            that.ordenamiento.columnaOrdenamiento = that.colsOrdenamiento.name;
+            that.RemoveOrderIcons();
+            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
+        // ordenamiento por email
+        that.page.find("#colEmail").click(function () {
+            that.paginacion.pagina = 1;
+            that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == that.colsOrdenamiento.email) ? !that.ordenamiento.asc : true;
+            that.ordenamiento.columnaOrdenamiento = that.colsOrdenamiento.email;
+            that.RemoveOrderIcons();
+            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
+        // ordenamiento por role
+        that.page.find("#colRole").click(function () {
+            that.paginacion.pagina = 1;
+            that.ordenamiento.asc = (that.ordenamiento.columnaOrdenamiento == that.colsOrdenamiento.role) ? !that.ordenamiento.asc : true;
+            that.ordenamiento.columnaOrdenamiento = that.colsOrdenamiento.role;
+            that.RemoveOrderIcons();
+            (that.ordenamiento.asc) ? TableHeaderOrderIconAsc($(this).find('i')) : TableHeaderOrderIconDesc($(this).find('i'));
+            that.QueryData(that.GetId(), that.GetName(), that.GetEmail(), that.GetRole(), that.paginacion, that.ordenamiento);
+        });
     };
     return ClientesSearch;
 }());

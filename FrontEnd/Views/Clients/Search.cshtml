@@ -4,17 +4,27 @@
 <div id="page">
     <div class="filtros">
         <form id="frmFiltros">
-            <input class="filtro" type="text" id="filterId" placeholder="Id Filter" tabindex=1 />
-            <input class="filtro" type="text" id="filterName" placeholder="Name Filter" tabindex=2 />
-            <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=3 />
-            <br />
-            <select class="filtro" id="filterRole" tabindex=4>
-                <option value="" disabled selected>Role Filter</option>
-                <option value="all">&lt;All&gt;</option>
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-            </select>
-            <br />
+            <div name="image_input">
+                <input class="filtro" type="text" id="filterId" placeholder="Id Filter" tabindex=1 />
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search a Client by Id" />
+            </div>
+            <div name="image_input">
+                <input class="filtro" type="text" id="filterName" placeholder="Name Filter" tabindex=2 />
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all clients whose name contains this filter (no case sensitive)" />
+            </div>
+            <div name="image_input">
+                <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=3 />
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all clients whose emails start with this filter (no case sensitive)" />
+            </div>
+            <div name="image_input">
+                <select class="filtro" id="filterRole" tabindex=4>
+                    <option value="" disabled selected>Role Filter</option>
+                    <option value="all">&lt;All&gt;</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all clients who belong to this role filter" />
+            </div>
             <input class="filtroApply" type="submit" value="Apply Filter" id="btnSearch" tabindex=5 />
         </form>
         <hr />
@@ -54,10 +64,12 @@
         </table>
     </div>
 </div>
+
 <script src="~/Scripts/App/Clientes.js"></script>
 <script src="~/Scripts/Dto/OrdenamientoDto.js"></script>
 <script src="~/Scripts/Dto/PaginacionDto.js"></script>
 <script src="~/Scripts/Globales.js"></script>
 <script>
     var clientesSearch = new ClientesSearch($("#page"), $('#Loader'));
+    clientesSearch.Process();
 </script>
