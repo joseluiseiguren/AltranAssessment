@@ -221,6 +221,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\information81.png" />
+    <Content Include="Images\loginicon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -279,8 +280,11 @@
     <TypeScriptCompile Include="Scripts\Dto\PaginacionDto.ts" />
     <TypeScriptCompile Include="Scripts\Dto\PolicyDto.ts" />
     <TypeScriptCompile Include="Scripts\Globales.ts" />
+    <Content Include="Scripts\knockout-min.js" />
     <TypeScriptCompile Include="Scripts\Typings\Boostrap\index.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\JQuery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\Typings\knockout\knockout.d.ts" />
+    <TypeScriptCompile Include="Scripts\Typings\knockout\tests\jasmine.extensions.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

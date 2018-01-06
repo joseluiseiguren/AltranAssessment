@@ -231,6 +231,7 @@ hr {
 .Table .tbody .tr:hover {
     margin-top: -1px;
     outline: none;
+    background-color: gainsboro;
 }
 
 .Table .tbody .tr .td {
