@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Altran BackEnd",
-		"_postman_id": "15de37a3-416d-e842-63e1-5ee546054fa2",
+		"_postman_id": "77032319-ce60-b78d-62c7-10fa63bdfcb5",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -39,44 +39,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "GetClientByUserName",
-			"request": {
-				"url": {
-					"raw": "http://{{hostBackEnd}}/api/clients/byusername?username=Merrill",
-					"protocol": "http",
-					"host": [
-						"{{hostBackEnd}}"
-					],
-					"path": [
-						"api",
-						"clients",
-						"byusername"
-					],
-					"query": [
-						{
-							"key": "username",
-							"value": "Merrill",
-							"equals": true,
-							"description": ""
-						}
-					],
-					"variable": []
+				"body": {
+					"mode": "raw",
+					"raw": ""
 				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "user",
-						"value": "Britney",
-						"description": ""
-					}
-				],
-				"body": {},
 				"description": ""
 			},
 			"response": []
@@ -113,7 +79,50 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetClientByUserName",
+			"request": {
+				"url": {
+					"raw": "http://{{hostBackEnd}}/api/clients/byusername?username=Merrill",
+					"protocol": "http",
+					"host": [
+						"{{hostBackEnd}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"byusername"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Merrill",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "user",
+						"value": "Britney",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -150,7 +159,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
