@@ -251,8 +251,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Clients\Search.cshtml" />
     <Content Include="Scripts\tsconfig.json" />
-    <Content Include="Views\Policies\GetByClient.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Policies\GetByClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -273,8 +273,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\App\CboInstallmentPayment.ts" />
     <TypeScriptCompile Include="Scripts\App\Clientes.ts" />
-    <TypeScriptCompile Include="Scripts\App\Policies.ts" />
+    <TypeScriptCompile Include="Scripts\App\PoliciesSearch.ts" />
     <TypeScriptCompile Include="Scripts\Dto\ClientDto.ts" />
     <TypeScriptCompile Include="Scripts\Dto\OrdenamientoDto.ts" />
     <TypeScriptCompile Include="Scripts\Dto\PaginacionDto.ts" />
@@ -283,6 +284,7 @@
     <Content Include="Scripts\knockout-min.js" />
     <TypeScriptCompile Include="Scripts\Typings\Boostrap\index.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\JQuery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\Typings\knockout\bindingHandlers.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="Scripts\Typings\knockout\tests\jasmine.extensions.d.ts" />
   </ItemGroup>

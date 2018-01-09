@@ -4,82 +4,127 @@
     ViewBag.Title = "Policies for Client: " + Model.Name;
 }
 
-<div id="page">
-    <div class="filtros">
-        <form id="frmFiltros">
-            <div name="image_input">
-                <input class="filtro" type="text" id="filterId" placeholder=" Policy Id Filter" tabindex=1 />
-                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search a Policy by Id" />
-            </div>
-            <div name="image_input">
-                <input class="filtro" type="text" id="filterAmount" placeholder="Amount Filter" tabindex=2 />
-                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose amount is equal to this filter" />
-            </div>
-            <div name="image_input">
-                <input class="filtro" type="text" id="filterEmail" placeholder="Email Filter" tabindex=4 />
-                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose emails start with this filter (no case sensitive)" />
-            </div>
-            <div name="image_input">
-                <label class="filroLabelUp">Inception Date Filter</label>
-                <input class="filtro filtroDate" type="date" id="filterInceptionDate" tabindex=3 />
-                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose inception date is equal to this filter" />
-            </div>
-            <div name="image_input">
-                <select class="filtro" id="filterInstallmentPayment" tabindex=5>
-                    <option value="" disabled selected>Installment Payment Filter</option>
-                    <option value="all">&lt;All&gt;</option>
-                    <option value="true">Yes</option>
-                    <option value="false">No</option>
-                </select>
-                <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies who belong to this installment payment filter" />
-            </div>
-            <input class="filtroApply" type="submit" value="Apply Filter" id="btnSearch" tabindex=5 />
-        </form>
-        <hr />
-        <label class="filroLabel">Rows Per Page</label>
-        <select id="filasPorPagina">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-        </select>
-        <hr />
-        <label class="filroLabel">Total Records: </label>
-        <label class="filroLabel" id="totalregistros"></label>
-        <br />
-        <label class="filroLabel">Total Pages: </label>
-        <label class="filroLabel" id="totalpaginas"></label>
-        <hr />
-        <label class="filroLabel">Actual Page: </label>
-        <label class="filroLabel" id="paginaactual"></label>
-        <br />
-        <input class="filtroNextPrevButton" type="button" value="<" id="prevPage" />
-        <input class="filtroNextPrevButton" type="button" value=">" id="nextPage" />
-    </div>
+<script src="~/Scripts/knockout-min.js"></script>
 
-    <div id="seachMessages" class="Centrado Message"></div>
-
-    <div class="contentTable">
-        <table class="Table col-md-12" id="tPolicies">
-            <thead class="thead">
-                <tr class="tr">
-                    <th class="th" id="colPolicyId"><a href="#">Policy Id</a><i></i></th>
-                    <th class="th" id="colAmount"><a href="#">Amount Insured</a><i></i></th>
-                    <th class="th" id="colEmail"><a href="#">Email</a><i></i></th>
-                    <th class="th" id="colInceptionDate"><a href="#">Inception Date</a><i></i></th>
-                    <th class="th" id="colInstallmentPayment"><a href="#">Installment Payment</a><i></i></th>
-                </tr>
-            </thead>
-            <tbody class="tbody"></tbody>
-        </table>
-    </div>
+<div class="filtros">
+    <form>
+        <div name="image_input">
+            <input class="filtro" type="text" placeholder=" Policy Id Filter" tabindex=1 data-bind="value: policyIdFilter, disable: isWorking" />
+            <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search a Policy by Id" />
+        </div>
+        <div name="image_input">
+            <input class="filtro" type="text" placeholder="Amount Filter" tabindex=2 data-bind="value: amountInsuredFilter, disable: isWorking"/>
+            <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose amount is equal to this filter" />
+        </div>
+        <div name="image_input">
+            <input class="filtro" type="text" placeholder="Email Filter" tabindex=4 data-bind="value: emailFilter, disable: isWorking"/>
+            <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose emails start with this filter (no case sensitive)" />
+        </div>
+        <div name="image_input">
+            <label class="filroLabelUp">Inception Date Filter</label>
+            <input class="filtro filtroDate" type="date" tabindex=3 data-bind="value: inceptionDateFilter, disable: isWorking"/>
+            <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies whose inception date is equal to this filter" />
+        </div>
+        <div name="image_input">
+            <label class="filroLabelUp">Installment Payment Filter</label>
+            <select class="filtro"
+                    tabindex=5
+                    data-bind="options: installmentPaymentFilterValues, optionsValue: 'id', optionsText: 'value', value: installmentPaymentFilter, disable: isWorking">
+            </select>
+            <img class="imgInformation" src="~/Images/information81.png" data-toggle="tooltip" title="Search all policies who belong to this installment payment filter" />
+        </div>
+        <input class="filtroApply" 
+               type="submit" 
+               value="Apply Filter" 
+               tabindex=5 
+               data-bind='click: applyFilter, disable: isWorking'/>
+    </form>
+    <hr />
+    <label class="filroLabel">Rows Per Page</label>
+    <select data-bind="options: rowsPerPageValues, value: rowsPerPage, event:{ change: applyFilter}, disable: isWorking">
+    </select>
+    <hr />
+    <label class="filroLabel">Total Records: </label>
+    <label class="filroLabel" data-bind="text: totalRecords, disable: isWorking"></label>
+    <br />
+    <label class="filroLabel">Total Pages: </label>
+    <label class="filroLabel" data-bind="text: totalPages, disable: isWorking"></label>
+    <hr />
+    <label class="filroLabel">Actual Page: </label>
+    <label class="filroLabel" data-bind="text: actualPage, disable: isWorking"></label>
+    <br />
+    <input class="filtroNextPrevButton" type="button" value="<" data-bind='click: prevPage, disable: isWorking' />
+    <input class="filtroNextPrevButton" type="button" value=">" data-bind='click: nextPage, disable: isWorking' />
 </div>
-<script src="~/Scripts/Dto/ClientDto.js"></script>
-<script src="~/Scripts/App/Policies.js"></script>
-<script src="~/Scripts/Dto/OrdenamientoDto.js"></script>
-<script src="~/Scripts/Dto/PaginacionDto.js"></script>
-<script src="~/Scripts/Globales.js"></script>
-<script>
-    var policiesSearch = new PoliciesSearch($("#page"), $('#Loader'), '@Model.Id');
-    policiesSearch.Process();
-</script>
 
+<div class="Centrado Message" data-bind='text: messages, visible: messages().length > 0'></div>
+
+<div class="contentTable">
+    <table class="Table col-md-12" data-bind="visible: !isWorking()">
+        <thead class="thead">
+            <tr class="tr">
+                <th class="th" 
+                    data-bind="sort: { prop: 'id' }">Policy Id
+                    <i class="fa" data-bind="css: { 
+                       'fa-caret-up': ordenamientoCol() == 'id' && ordenamientoAsc() == true,
+                       'fa-caret-down': ordenamientoCol() == 'id' && ordenamientoAsc() == false
+                       }">
+                    </i>
+                </th>
+                <th class="th"
+                    data-bind="sort: { prop: 'amountinsured' }">
+                    Amount Insured
+                    <i class="fa" data-bind="css: {
+                       'fa-caret-up': ordenamientoCol() == 'amountinsured' && ordenamientoAsc() == true,
+                       'fa-caret-down': ordenamientoCol() == 'amountinsured' && ordenamientoAsc() == false
+                       }">
+                    </i>
+                </th>
+                <th class="th"
+                    data-bind="sort: { prop: 'email' }">
+                    Email
+                    <i class="fa" data-bind="css: {
+                       'fa-caret-up': ordenamientoCol() == 'email' && ordenamientoAsc() == true,
+                       'fa-caret-down': ordenamientoCol() == 'email' && ordenamientoAsc() == false
+                       }">
+                    </i>
+                </th>
+                <th class="th"
+                    data-bind="sort: { prop: 'inceptiondate' }">
+                    Inception Date
+                    <i class="fa" data-bind="css: {
+                       'fa-caret-up': ordenamientoCol() == 'inceptiondate' && ordenamientoAsc() == true,
+                       'fa-caret-down': ordenamientoCol() == 'inceptiondate' && ordenamientoAsc() == false
+                       }">
+                    </i>
+                </th>
+                <th class="th"
+                    data-bind="sort: { prop: 'installmentpayment' }">
+                    Installment Payment
+                    <i class="fa" data-bind="css: {
+                       'fa-caret-up': ordenamientoCol() == 'installmentpayment' && ordenamientoAsc() == true,
+                       'fa-caret-down': ordenamientoCol() == 'installmentpayment' && ordenamientoAsc() == false
+                       }">
+                    </i>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody" data-bind="foreach: policies">
+            <tr class="tr">
+                <td class="td" data-bind="text: id"></td>
+                <td class="td right" data-bind="text: amountInsured"></td>
+                <td class="td" data-bind="text: email"></td>
+                <td class="td" data-bind="text: inceptionDate"></td>
+                <td class="td" data-bind="text: InstallmentPaymentToString()"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="~/Scripts/App/CboInstallmentPayment.js"></script>
+<script src="~/Scripts/Dto/PolicyDto.js"></script>
+<script src="~/Scripts/App/PoliciesSearch.js"></script>
+<script>
+    let ps = new PoliciesSearch('@Model.Id');
+    ko.applyBindings(ps);
+</script>
