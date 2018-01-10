@@ -121,10 +121,15 @@
     </table>
 </div>
 
+<script src="~/Scripts/Globales.js"></script>
 <script src="~/Scripts/App/CboInstallmentPayment.js"></script>
 <script src="~/Scripts/Dto/PolicyDto.js"></script>
 <script src="~/Scripts/App/PoliciesSearch.js"></script>
 <script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
     let ps = new PoliciesSearch('@Model.Id');
     ko.applyBindings(ps);
 </script>

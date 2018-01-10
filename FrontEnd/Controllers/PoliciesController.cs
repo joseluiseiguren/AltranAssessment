@@ -36,6 +36,10 @@
         public ActionResult GetByClient(string id)
         {
             var client = this.clientsRepository.GetClients().Where(p => p.Id.Equals(id)).FirstOrDefault();
+            if (client == null)
+            {
+                return RedirectToAction("Search", "Clients");
+            }
 
             return View(client.ToDto());
         }

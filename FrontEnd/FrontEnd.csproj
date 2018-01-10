@@ -249,10 +249,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Clients\Search.cshtml" />
     <Content Include="Scripts\tsconfig.json" />
     <Content Include="Views\Users\Login.cshtml" />
     <Content Include="Views\Policies\GetByClient.cshtml" />
+    <Content Include="Views\Clients\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,7 +274,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\App\CboInstallmentPayment.ts" />
-    <TypeScriptCompile Include="Scripts\App\Clientes.ts" />
+    <TypeScriptCompile Include="Scripts\App\CboRole.ts" />
+    <TypeScriptCompile Include="Scripts\App\ClientsSearch.ts" />
     <TypeScriptCompile Include="Scripts\App\PoliciesSearch.ts" />
     <TypeScriptCompile Include="Scripts\Dto\ClientDto.ts" />
     <TypeScriptCompile Include="Scripts\Dto\OrdenamientoDto.ts" />
